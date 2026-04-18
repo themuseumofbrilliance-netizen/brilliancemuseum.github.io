@@ -4,11 +4,239 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shots Fired on Valentine St. · The Museum of Brilliance</title>
-  <meta name="description" content="Shots Fired on Valentine St. — a solo exhibition by Keondra.">
+  <meta name="description" content="Shots Fired on Valentine St. — a solo exhibition by Keo, December 2025.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Richer work item layout for museum-label descriptions */
+    .work-entry {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .work-entry:last-child {
+      border-bottom: none;
+    }
+    .work-entry__image {
+      aspect-ratio: 4 / 5;
+      background: var(--white-warm);
+      border: 1px solid var(--rule-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .work-entry__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .work-entry__placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--white-warm) 0%, #efece3 100%);
+      color: var(--brass);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    .work-entry__placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+    .work-entry__label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .work-entry__label .status {
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .work-entry__label .status--sold {
+      color: var(--brass);
+    }
+    .work-entry__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+    .work-entry__year {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--brass);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .work-entry__medium {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .work-entry__description {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      max-width: 55ch;
+    }
+
+    /* Screenplay section */
+    .screenplay-toggle {
+      background: transparent;
+      border: 1px solid var(--rule);
+      padding: 1rem 2rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8125rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 240ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .screenplay-toggle:hover {
+      background: var(--sapphire);
+      color: var(--white);
+      border-color: var(--sapphire);
+    }
+    .screenplay-toggle__icon {
+      transition: transform 300ms ease;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+    .screenplay-toggle.is-open .screenplay-toggle__icon {
+      transform: rotate(45deg);
+    }
+    .screenplay {
+      display: none;
+      margin-top: var(--space-4);
+      padding: var(--space-5) clamp(1.5rem, 4vw, 3rem);
+      background: var(--white-warm);
+      border: 1px solid var(--rule);
+      max-width: 780px;
+    }
+    .screenplay.is-open {
+      display: block;
+    }
+    .screenplay__header {
+      text-align: center;
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .screenplay__supra {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1rem;
+    }
+    .screenplay__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .screenplay__byline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .screenplay__body {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .screenplay__body .slug {
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .screenplay__body .slug:first-child {
+      margin-top: 0;
+    }
+    .screenplay__body .action {
+      margin-bottom: 1rem;
+    }
+    .screenplay__body .character {
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      margin-bottom: 0.25rem;
+      font-style: italic;
+    }
+    .screenplay__body .parenthetical {
+      text-align: center;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .screenplay__body .dialogue {
+      text-align: center;
+      max-width: 40ch;
+      margin: 0 auto 1rem;
+      font-style: italic;
+    }
+    .screenplay__body .transition {
+      text-align: right;
+      font-style: italic;
+      color: var(--text-muted);
+      margin: 1.5rem 0;
+    }
+    .screenplay__body em {
+      color: var(--text-muted);
+    }
+    .screenplay__body .end {
+      text-align: center;
+      letter-spacing: 0.3em;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule-soft);
+      font-weight: 700;
+    }
+
+    @media (max-width: 800px) {
+      .work-entry {
+        grid-template-columns: 1fr;
+      }
+      .work-entry__image {
+        max-width: 360px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -16,7 +244,7 @@
     <div class="site-header__inner">
       <a href="../index.html" class="brand">
         The Museum of Brilliance
-        <small>Est. Dallas</small>
+        <small>Est. Texas</small>
       </a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <nav class="nav">
@@ -37,10 +265,11 @@
       <span class="label label--brass page-header__label reveal">Solo Exhibition · No. 001</span>
       <h1 class="page-header__title reveal" style="font-style: italic;">Shots Fired on Valentine St.</h1>
       <p class="page-header__lede reveal">
-        December 2025 · [Venue Name], Dallas
+        December 2025 &middot; The Office On Perry &middot; Downtown Dallas &middot; One-night exhibition
       </p>
     </section>
 
+    <!-- PROJECT STATEMENT -->
     <section class="container section">
       <div class="two-col">
         <div class="two-col__aside">
@@ -48,10 +277,22 @@
         </div>
         <div class="prose">
           <p>
-            [Write the project statement here. Two to four sentences. What the series is about, what it came from, what it's trying to do. Keep it plain — the work should carry the weight.]
+            <em>Shots Fired on Valentine St.</em> was a one-night exhibition in downtown Dallas, December 2025 &mdash; the first solo show by Keo, marking the public debut of a body of work developed over three years. The exhibition brought together paintings, mixed-media objects, and a written screenplay for an animated short film of the same title.
           </p>
           <p class="prose--plain">
-            [Optional second paragraph. Material notes, process, the conditions under which the work was made. If there's a quiet context, name it here.]
+            At the center of the work is the Blue Cowboy &mdash; a figure who appears across the paintings and anchors the companion screenplay, <em>The Blue Cowboy &amp; The Blob</em>. He arrives in each piece already armored: hat pulled low, eyes never visible, body rendered in a blue that reads as both color and emotional temperature. He is a figure built for an exposure he hopes never arrives.
+          </p>
+          <p class="prose--plain">
+            Across the exhibition, the Blue Cowboy moves through thresholds &mdash; a parking lot at night, an abandoned rooftop, a first night in a new home &mdash; carrying the same posture into each. Alongside him, a recurring neon sign reads SFOVS. The sign is the show's constant: a place-marker that keeps cycling regardless of who has left or arrived.
+          </p>
+          <p class="prose--plain">
+            Works on canvas and pillowcase investigate the same tension through different surfaces. <em>First Night At Home</em> transfers the red glow of signage onto a domestic object, softening the signal into fabric. <em>Cloud To Soil</em> bends language into mass, using the physical weight of paint to hold what words can't. <em>Process</em> &mdash; the studio drop cloth, laid flat for months &mdash; reframes accumulated evidence as the main event, every mark a record of a decision made elsewhere in the room.
+          </p>
+          <p class="prose--plain">
+            The screenplay extends the visual work into time. In it, the Blue Cowboy attempts to build a signal, a blob of color answers him, and the harmony between them becomes the thing that breaks them both. The written piece appeared in the show as an object &mdash; staged with candles and a single rose &mdash; and is included here in full.
+          </p>
+          <p class="prose--plain">
+            Taken together, the exhibition is a study of what it costs to be reached. The work is not about a specific loss. It is about the architecture built around the possibility of one.
           </p>
         </div>
       </div>
@@ -59,6 +300,7 @@
 
     <hr class="rule">
 
+    <!-- WORKS -->
     <section class="container section">
       <div class="section-title">
         <span class="section-title__number">i.</span>
@@ -66,57 +308,370 @@
         <span class="section-title__rule"></span>
       </div>
 
-      <div class="work-grid">
-        <figure>
-          <div class="work-item__image">
-            <div class="exhibition-card__placeholder">Image forthcoming</div>
-          </div>
-          <figcaption class="work-item__caption">
-            [Title of Work], 2025.
-            <span>Gouache on paper · 18 × 24 in.</span>
-          </figcaption>
-        </figure>
+      <div style="display: grid; gap: 0;">
 
-        <figure>
-          <div class="work-item__image">
-            <div class="exhibition-card__placeholder">Image forthcoming</div>
+        <!-- First Night On The Rooftop -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
           </div>
-          <figcaption class="work-item__caption">
-            [Title of Work], 2025.
-            <span>Gouache on paper · 18 × 24 in.</span>
-          </figcaption>
-        </figure>
+          <div>
+            <div class="work-entry__label">
+              Work No. 01
+              <span class="status status--sold">· Sold</span>
+            </div>
+            <h3 class="work-entry__title">First Night On The Rooftop</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">
+              Keo renders a lone figure in blue beneath a streetlight, the body flattened against an empty parking lot. Acrylic is applied in deliberate layers: muted tones for the pavement and buildings, sharper edges for the neon sign that continues its cycle overhead. The composition holds a single moment of stillness, the figure positioned in a way that suggests pause rather than motion. By isolating form against urban infrastructure, the work gestures toward vulnerability and exposure without dramatizing it.
+            </p>
+          </div>
+        </div>
 
-        <figure>
-          <div class="work-item__image">
-            <div class="exhibition-card__placeholder">Image forthcoming</div>
+        <!-- SFOVS -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
           </div>
-          <figcaption class="work-item__caption">
-            [Title of Work], 2025.
-            <span>Gouache on paper · 18 × 24 in.</span>
-          </figcaption>
-        </figure>
+          <div>
+            <div class="work-entry__label">
+              Work No. 02
+              <span class="status">· Available</span>
+            </div>
+            <h3 class="work-entry__title">SFOVS</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">
+              The Blue Cowboy stands atop an abandoned rooftop, the cityscape drawn in flat perspective and stacked windows that turn the composition into something closer to a diagram &mdash; a way of organizing memory through spatial logic. Here, the artist showcases how something can now be studied, edited, and re-entered with sharper confidence.
+            </p>
+          </div>
+        </div>
 
-        <figure>
-          <div class="work-item__image">
-            <div class="exhibition-card__placeholder">Image forthcoming</div>
+        <!-- Cloud To Soil -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
           </div>
-          <figcaption class="work-item__caption">
-            [Title of Work], 2025.
-            <span>Mixed media · dimensions variable.</span>
-          </figcaption>
-        </figure>
+          <div>
+            <div class="work-entry__label">
+              Work No. 03
+              <span class="status">· Available</span>
+            </div>
+            <h3 class="work-entry__title">Cloud To Soil</h3>
+            <p class="work-entry__year">2023</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">
+              A dark blue figure bends forward against a rust-red field, arm extended into a thick patch of layered, dragged acrylic. The pale "soil" is built through repeated gestures, left rough and unresolved. Keo uses the physical weight of paint to anchor abstraction, letting the surface carry what language might struggle to hold. <em>Cloud To Soil</em> comes from taking old, heavy experiences and refusing to leave them floating in your head. Here they're dragged down into the ground instead &mdash; pressed into a place where they can act like compost, feeding whatever decides to grow next.
+            </p>
+          </div>
+        </div>
+
+        <!-- The Little Blue House -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
+          </div>
+          <div>
+            <div class="work-entry__label">
+              Work No. 04
+              <span class="status">· Available</span>
+            </div>
+            <h3 class="work-entry__title">The Little Blue House</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic and oil pastels on canvas</p>
+            <p class="work-entry__description">
+              Working from a found photograph, Keo reduces the scene to its essential elements: a field, a deep blue sky, and a single glowing blue house in the distance. The house is blocked in with acrylic, then built up with oil pastel until the color pushes past natural, reading more as signal than structure. A small figure stands back and observes. The work folds looking into considering, watching a life lit up across the grass before deciding what comes next.
+            </p>
+          </div>
+        </div>
+
+        <!-- First Night At Home -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
+          </div>
+          <div>
+            <div class="work-entry__label">
+              Work No. 05
+              <span class="status status--sold">· Sold</span>
+            </div>
+            <h3 class="work-entry__title">First Night At Home</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic and oil pastels on pillowcase</p>
+            <p class="work-entry__description">
+              By painting directly onto pillowcases, Keo transforms functional objects into surfaces for memory and intimacy. The red letters emerge through layered acrylic and oil pastel, their glow recalling signage but subdued by the fabric's domestic softness. Here, the artist uses materials and text to evoke a threshold moment &mdash; one where unfamiliarity quietly settles into something closer.
+            </p>
+          </div>
+        </div>
+
+        <!-- Process -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
+          </div>
+          <div>
+            <div class="work-entry__label">
+              Work No. 06
+              <span class="status">· Available</span>
+            </div>
+            <h3 class="work-entry__title">Process</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic and oil pastels on duck cotton</p>
+            <p class="work-entry__description">
+              Laid flat in the studio for months, this unstretched duck cotton has accumulated test marks, wiped brushes, dropped pastels, and overspray from other works. Angles of color stop abruptly where canvases once sat, leaving ghost borders and overlapping sweeps of paint. Nothing here was planned, but every layer records a decision made elsewhere in the studio. Keo reframes the drop cloth as the main event, a single surface that holds the accumulation and rhythm of building an exhibition.
+            </p>
+          </div>
+        </div>
+
+        <!-- Untitled -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
+          </div>
+          <div>
+            <div class="work-entry__label">
+              Work No. 07
+              <span class="status status--sold">· Sold</span>
+            </div>
+            <h3 class="work-entry__title">Untitled</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">
+              Two outline figures stand against a misted forest, rendered as blue contour drawings atop a softly painted ground. One offers a red rose; the other appears mid-step, hand raised, uncommitted. The composition holds the pair in a moment of proposition and hesitation &mdash; bodies drawn in the vocabulary of anatomical study, as if the relationship itself is still being diagrammed.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hero's Journey -->
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <div class="work-entry__placeholder">Image forthcoming</div>
+          </div>
+          <div>
+            <div class="work-entry__label">
+              Work No. 08
+              <span class="status status--sold">· Sold</span>
+            </div>
+            <h3 class="work-entry__title">Hero's Journey</h3>
+            <p class="work-entry__year">2022</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">
+              On the left, a sphere sits carefully shaded against a muted, cloudy ground. On the right, that same sphere is pulled apart into a chart of arrows, notes, and pathways. Keo treats the process of understanding as a visual problem: beginning with something simple and solid, then overworking it into a diagram of possible outcomes. The split composition mirrors the way introspection can become recursive, mapping and remapping until the original form is nearly obscured.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <hr class="rule">
 
+    <!-- SCREENPLAY -->
+    <section class="container section">
+      <div class="section-title">
+        <span class="section-title__number">ii.</span>
+        <span class="section-title__text">The Screenplay</span>
+        <span class="section-title__rule"></span>
+      </div>
+
+      <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; line-height: 1.6;">
+        An animated short film script, staged in the exhibition as a printed object with candles and a single rose. The full text is presented below in its original format.
+      </p>
+
+      <button class="screenplay-toggle" data-screenplay-toggle aria-expanded="false">
+        <span class="screenplay-toggle__label">Read the screenplay</span>
+        <span class="screenplay-toggle__icon" aria-hidden="true">+</span>
+      </button>
+
+      <div class="screenplay" data-screenplay>
+        <div class="screenplay__header">
+          <p class="screenplay__supra">SFOVS · Animated Short Film</p>
+          <h3 class="screenplay__title">The Blue Cowboy &amp; The Blob</h3>
+          <p class="screenplay__byline">Written by Keo</p>
+        </div>
+
+        <div class="screenplay__body">
+          <span class="slug">EXT. DESERTED PLAIN, HOME PLANET — MAGIC HOUR</span>
+
+          <p class="action">A creaking METAL SIGN flickers, its letters half-burned, half-sparking. The name "SFOVS" jitters in neon before fading to a sullen hum.</p>
+
+          <p class="action">The horizon is a reddish-orange wash. Thick atmosphere. The world holds its breath. No wind. Only stillness.</p>
+
+          <p class="action">Bright, color-contrasting blue feet step into frame. A brimmed HAT that throws the face into shadow. We never see the eyes.</p>
+
+          <p class="action">This is THE BLUE COWBOY. Completely blue. Humanoid but otherworldly. His jaw is the only facial feature visible beneath the hat's shadow.</p>
+
+          <p class="action">He walks up to a small DATE-STYLE TABLE with TWO CHAIRS through the emptiness, a ritual in the middle of nowhere. It's the same table he's known all his life, a fixture of his home world.</p>
+
+          <p class="action">He removes his hat with slow ceremony. Places it on the empty chair. Sits in the other.</p>
+
+          <p class="action">A beat of quiet. Dust moves in slow motion through the air. The distant hum of the sign.</p>
+
+          <p class="action">Something falls from the heavens — a GLISTENING BLOB hits the ground with a soft, wet THUD.</p>
+
+          <p class="action">The Cowboy snaps up, grabbing his hat and pulling the brim low. Armor against <em>exposure</em>.</p>
+
+          <p class="action"><em>WIDE SHOT: The TABLE in the foreground. The BLOB a few yards away. The Cowboy centered like a singular monument in the endless plain.</em></p>
+
+          <p class="action">He approaches slowly. The Blob has a faint humanoid suggestion but refuses any fixed shape. Yellow. Translucent. Color pools and retracts within it, like breathing paint.</p>
+
+          <p class="action">The Cowboy lifts it upright. It slumps, boneless. Collapses again.</p>
+
+          <p class="action">He turns to go.</p>
+
+          <p class="action">Behind him a sly motion. The Blob opens a slitted "eye," then winks.</p>
+
+          <p class="action">It surges forward with sudden childlike energy, rushing toward him.</p>
+
+          <p class="action">PASSES THROUGH HIS CHEST in a soundless shockwave of color.</p>
+
+          <p class="action">The Cowboy staggers. His hand goes to his chest.</p>
+
+          <p class="transition">CUT TO BLACK.</p>
+
+          <span class="slug">EXT. ABANDONED ROOFTOP — DAWN</span>
+
+          <p class="action">The Cowboy gasps awake beneath a drooping TARP. He claws for his hat and yanks it low. Breathing hard, he scans the jagged skyline and the ruined ledge.</p>
+
+          <p class="action">He scoots backward into RUBBLE knees to chest, half-concealed by trash and torn plastic. Dust drifts in the slanted light. His breath condenses, then disappears.</p>
+
+          <p class="action">A silence beyond silence.</p>
+
+          <p class="action">He peers at his own hands. A faint shimmer travels under the skin. Ink in water. He clenches his fists. The shimmer subsides.</p>
+
+          <p class="action"><em>ANGLE FROM ABOVE: A single figure on a wide, forsaken roof. The city below looks far away, like a model.</em></p>
+
+          <p class="action">TIME-LAPSE: The moon waxes and wanes. Shadows slide across the tarp. The tarp flaps, then stills.</p>
+
+          <p class="action">The Cowboy hasn't moved. A posture of stubborn stillness that masquerades as control.</p>
+
+          <p class="action">At last — a twitch. He rolls his shoulders. Stretches his neck. The body betrays the myth of stasis.</p>
+
+          <p class="action">He crawls out of the rubble. Knees scratch on gravel. He begins collecting stray MATERIALS from the trash: a bent rebar, a splintered plank, a discarded table leg, a rectangle of weathered glass.</p>
+
+          <p class="action">He assembles them with patient, improvised logic — recreating the TABLE from his home planet, a piece of a familiar world built from salvage. It's his one comfort in a foreign landscape. A <strong>comforting</strong> memory rendered in salvage.</p>
+
+          <p class="action">A ripple runs across his body invisible to all but us. Color leaks from beneath the skin, then retreats. He breathes it back down.</p>
+
+          <p class="action">He sets his hat carefully on the makeshift tabletop, weighted to keep it from blowing away. <strong>Safe again.</strong></p>
+
+          <span class="slug">EXT. ABANDONED ROOFTOP — NIGHT</span>
+
+          <p class="action">Wind drags across the roof — low, metallic. The DATE TABLE waits between two chairs. Two glasses. One hat. The ritual rebuilt.</p>
+
+          <p class="action">The Cowboy steps forward. Hat low. Eyes unseen. He sets a small TRANSMITTER on the table — cracked, handmade, held together by wire and belief.</p>
+
+          <p class="action">He turns the dial like a rosary, fingers trembling over the knobs. A prayer disguised as a signal.</p>
+
+          <p class="action">He turns the dial. Static. Then a faint, pulsing tone — one-two, one-two.</p>
+
+          <p class="action">He listens. Nothing. He exhales, adjusts again. The hum sharpens, steadies — a signal clawing its way through noise.</p>
+
+          <p class="action">From the corner, the BLOB stirs.</p>
+
+          <p class="action">It drifts closer, shape shifting, drawn to the sound. The Cowboy keeps tuning not out of curiosity, but need. This isn't play. It's a call for help.</p>
+
+          <p class="character">Cowboy</p>
+          <p class="parenthetical">(under breath)</p>
+          <p class="dialogue">Come on.</p>
+
+          <p class="action">The tone flickers. Then stabilizes. The Blob hums back matching the rhythm, soft and eager.</p>
+
+          <p class="action">He looks up.</p>
+
+          <p class="action">The Blob glows, pulsing in perfect time. For the first time, the Cowboy hesitates. He adjusts one last time gently, as if he's afraid of breaking whatever's forming.</p>
+
+          <p class="action"><strong>Harmony.</strong></p>
+
+          <p class="action">A single note clean, full, impossible. The transmitter lights flare.</p>
+
+          <p class="action">The table trembles.</p>
+
+          <p class="action">For a second, the rooftop hums like a living thing. Then, blaring feedback. A jagged shriek splits the night. The glasses rattle. Water vibrates.</p>
+
+          <p class="action">The Cowboy jerks back, grabs the dial, but the sound fights him as if the signal won't let go.</p>
+
+          <p class="action">The Blob grows brighter, panicked but trying to help — pouring more of itself into the transmission.</p>
+
+          <p class="action">The feedback rises, higher, harsher until the rooftop seems to bend around it.</p>
+
+          <p class="action">The Cowboy slams his palm on the table — the device jumps, wires sparking.</p>
+
+          <p class="action">POP.</p>
+
+          <p class="action">A burst of white light. Then silence — but the hum lingers inside him.</p>
+
+          <p class="action">He stumbles back, breath ragged. The Blob dims, trembling. A small sound escapes it — an apology made of radio.</p>
+
+          <p class="action">The Cowboy's body flickers — faint blue light under skin. The signal's moved into him. His chest beats in electric rhythm.</p>
+
+          <p class="action">He grips the edge of the table. The hat shadow shakes.</p>
+
+          <p class="action">The Blob doesn't understand. It reaches for him, terrified. Its glow brightens and the frequency between them spikes. The TRANSMITTER REACTIVATES on its own — lights flaring red, glass vibrating off the table.</p>
+
+          <p class="action">The Cowboy lunges to pull the plug but the Blob surges forward, desperate to help.</p>
+
+          <p class="action">COLLISION.</p>
+
+          <p class="action">Sound and light explode outward — a flash that turns the night white.</p>
+
+          <p class="action">The Cowboy is thrown backward — the DATE TABLE SHATTERS, glasses bursting into shards of light and water.</p>
+
+          <p class="action">The Blob folds inward, color imploding, then expands a pulse that knocks the wind from the world.</p>
+
+          <p class="action">The Cowboy hits the ground hard, chest glowing, still shaking. The transmitter rolls to the edge, its hum dying in static.</p>
+
+          <p class="action">Silence.</p>
+
+          <p class="action">Smoke.</p>
+
+          <p class="action">Wind again.</p>
+
+          <p class="action">The Blob crawls toward him faint, flickering, a wounded animal trying to understand what it broke.</p>
+
+          <p class="action">The Cowboy doesn't move.</p>
+
+          <p class="action">Then, faintly the SFOVS sign flickers once. Twice.</p>
+
+          <p class="action">Then stays lit. The Blob pauses. Looks at him. Looks at the sign. The hum fades.</p>
+
+          <p class="transition">CUT TO BLACK.</p>
+
+          <p class="action">A single breath uneven, electric — breaks the silence.</p>
+
+          <p class="action">We don't know who it belongs to.</p>
+
+          <p class="transition">FADE IN:</p>
+
+          <span class="slug">EXT. ABANDONED ROOFTOP — PRE-DAWN</span>
+
+          <p class="action">Gray light. The space between night and day. The rooftop is destroyed. Broken glass. Splintered wood. The table in pieces.</p>
+
+          <p class="action">A figure lies motionless near the ledge. The hat rests a few feet away. Overturned. Empty. The figure doesn't move.</p>
+
+          <p class="action">Far below, the city begins to hum with morning. The sign in the distance flickers on. Off. On.</p>
+
+          <p class="action">The figure's hand twitches. Just once.</p>
+
+          <p class="action">Then still again.</p>
+
+          <p class="action">HOLD on the destroyed rooftop.</p>
+
+          <p class="end">THE END</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- INQUIRE -->
     <section class="container section">
       <div style="display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: baseline;">
         <div>
           <span class="label label--brass" style="display: block; margin-bottom: 0.75rem;">Acquisition · Press</span>
-          <p class="serif-body" style="max-width: 40ch;">
-            For inquiries regarding this exhibition, please write to the Office of the Archive.
+          <p class="serif-body" style="max-width: 45ch;">
+            For inquiries regarding available works from <em>Shots Fired on Valentine St.</em>, please write to the office.
           </p>
         </div>
         <a href="../inquiries.html" class="button">Inquire</a>
@@ -133,7 +688,7 @@
         <div>
           <p class="site-footer__label">Office of the Archive</p>
           <p class="site-footer__text">
-            Dallas, Texas<br>
+            Texas<br>
             United States<br><br>
             <a href="mailto:contact@brilliancemuseum.com">contact@brilliancemuseum.com</a>
           </p>
@@ -155,17 +710,31 @@
       </div>
       <div class="site-footer__bottom">
         <span>© 2026 The Museum of Brilliance. All rights reserved.</span>
-        <span>Est. Dallas, TX</span>
+        <span>Est. Texas</span>
       </div>
     </div>
   </footer>
 
   <script>
+    // Mobile nav toggle
     document.querySelector('.nav-toggle')?.addEventListener('click', (e) => {
       const nav = document.querySelector('.nav');
       const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
       e.currentTarget.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('is-open');
+    });
+
+    // Screenplay toggle
+    const screenplayToggle = document.querySelector('[data-screenplay-toggle]');
+    const screenplay = document.querySelector('[data-screenplay]');
+    const screenplayLabel = document.querySelector('.screenplay-toggle__label');
+
+    screenplayToggle?.addEventListener('click', () => {
+      const isOpen = screenplay.classList.contains('is-open');
+      screenplay.classList.toggle('is-open');
+      screenplayToggle.classList.toggle('is-open');
+      screenplayToggle.setAttribute('aria-expanded', String(!isOpen));
+      screenplayLabel.textContent = isOpen ? 'Read the screenplay' : 'Close screenplay';
     });
   </script>
 
