@@ -13,6 +13,133 @@
   <style>
     body { overflow: hidden; }
     [data-gate-content] { display: none; }
+
+    /* Portrait block */
+    .portrait {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-5);
+      align-items: center;
+      padding-top: var(--space-5);
+      padding-bottom: var(--space-5);
+    }
+    .portrait__image {
+      aspect-ratio: 4 / 5;
+      background: var(--white-warm);
+      border: 1px solid var(--rule-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .portrait__placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--white-warm) 0%, #efece3 100%);
+      color: var(--brass);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    .portrait__placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+    .portrait__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+    }
+    .portrait__role {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--brass);
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .portrait__meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .portrait__meta dt {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+      padding-top: 0.15rem;
+    }
+    .portrait__meta dd {
+      color: var(--text);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery__item {
+      aspect-ratio: 1 / 1;
+      background: var(--white-warm);
+      border: 1px solid var(--rule-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery__placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--white-warm) 0%, #efece3 100%);
+      color: var(--brass);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.875rem;
+    }
+
+    /* Richer bullet styling for family entries */
+    .experience-bullets {
+      margin-top: 0.75rem;
+      padding-left: 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 800px) {
+      .portrait {
+        grid-template-columns: 1fr;
+      }
+      .portrait__image {
+        max-width: 280px;
+      }
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -68,6 +195,34 @@
         </p>
       </section>
 
+      <!-- PORTRAIT / INTRODUCTION -->
+      <section class="container">
+        <div class="portrait">
+          <div class="portrait__image">
+            <div class="portrait__placeholder">Portrait<br>forthcoming</div>
+          </div>
+          <div>
+            <h2 class="portrait__name">Keondra Hunter</h2>
+            <p class="portrait__role">Private Nanny &amp; Household Professional</p>
+            <dl class="portrait__meta">
+              <dt>Based</dt>
+              <dd>Dallas, Texas</dd>
+              <dt>Experience</dt>
+              <dd>11+ years in early childhood education &amp; private households</dd>
+              <dt>Availability</dt>
+              <dd>Live-in, live-out, or travel &mdash; domestic and international</dd>
+              <dt>Languages</dt>
+              <dd>English (native)</dd>
+              <dt>Certifications</dt>
+              <dd>CPR &amp; First Aid</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <!-- SUMMARY -->
       <section class="container section">
         <div class="two-col">
           <div class="two-col__aside">
@@ -75,13 +230,13 @@
           </div>
           <div class="prose">
             <p>
-              Private household professional with over a decade of experience spanning early childhood education, private childcare, and personal assistant support within high-net-worth households in Dallas and the greater Texas area.
+              Private household professional with over a decade of experience spanning early childhood education, private childcare, and personal assistant support within high-net-worth and high-profile households in Dallas and the greater Texas area.
             </p>
             <p class="prose--plain">
-              Has operated in dual capacities &mdash; as a primary nanny and as a personal assistant to the household principal &mdash; bringing genuine range to private household roles. Particular strengths include infant and toddler care, behavioral support, multi-home coordination, travel accompaniment, vendor sourcing, and calendar management.
+              Has operated in dual capacities &mdash; as a primary nanny and as a personal assistant to the household principal &mdash; bringing genuine range to private household roles. Particular strengths include infant and toddler care, behavioral support for children with ADHD and special needs, multi-home coordination, travel accompaniment (domestic and international), vendor sourcing, event planning, and calendar management.
             </p>
             <p class="prose--plain">
-              Accustomed to the discretion, professionalism, and adaptability expected in high-profile private households.
+              Accustomed to the discretion, professionalism, and adaptability expected in high-profile private households. Comfortable with non-disclosure agreements, high-security environments, and the distinct rhythms of families whose time, privacy, and consistency are paramount.
             </p>
           </div>
         </div>
@@ -89,6 +244,7 @@
 
       <hr class="rule">
 
+      <!-- PRIVATE FAMILY EXPERIENCE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">i.</span>
@@ -97,68 +253,102 @@
         </div>
 
         <ul class="info-list">
+
+          <!-- 2022-2024 TRAVEL / HIGH-PROFILE -->
           <li class="info-list__item">
             <span class="info-list__year">2022&ndash;2024</span>
             <div class="info-list__body">
               <strong>Travel &amp; Household Nanny</strong>
-              Private Family &middot; Dallas, TX &middot; Houston, TX &middot; Extended Travel
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Provided primary care for two children (ages 2 and 3) across multiple household locations in Dallas and Houston.</li>
-                <li>Accompanied the family on travel, including domestic flights as the designated childcare provider.</li>
-                <li>Managed all daily care routines, meals, nap schedules, and developmental activities for toddlers across two active households.</li>
-                <li>Maintained strict confidentiality and discretion consistent with a high-profile private household.</li>
-                <li>Coordinated independently with each parent's schedule across separate primary residences.</li>
+              Private Family (High-Profile) &middot; Dallas, TX &middot; Houston, TX &middot; Extended Travel
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
+                Children: Ages 2 and 3 upon hire
+              </p>
+              <ul class="experience-bullets">
+                <li>Served as primary nanny for two young children across multiple residences in Dallas and Houston, maintaining consistency in routine, tone, and expectations across both households.</li>
+                <li>Accompanied the family on extensive domestic travel as the designated childcare provider, including flights and extended stays &mdash; roles that require comfort with logistics, high-security environments, and discretion.</li>
+                <li>Coordinated independently with each parent's schedule across separate primary residences, serving as a steady point of continuity for the children during transitions.</li>
+                <li>Managed developmentally appropriate daily care for toddlers, including structured routines, meals, nap schedules, enrichment activities, and milestone tracking.</li>
+                <li>Operated under strict confidentiality consistent with the standards of high-profile households. Reference available with the family's consent upon agency inquiry.</li>
               </ul>
             </div>
           </li>
 
+          <!-- 2021-2023 SMITH / DUAL ROLE -->
           <li class="info-list__item">
             <span class="info-list__year">2021&ndash;2023</span>
             <div class="info-list__body">
-              <strong>Nanny &amp; Personal Assistant to Principal</strong>
-              Private Family &middot; Dallas, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Served in a dual capacity: primary nanny for school-age children and personal assistant to the household's principal during school hours.</li>
-                <li>Managed the principal's personal calendar, appointment scheduling, and day-to-day task coordination on an on-call basis.</li>
-                <li>Sourced vendors and service providers across beauty, photography, and personal lifestyle categories.</li>
-                <li>Provided proactive reminders, follow-through on outstanding tasks, and general organizational support.</li>
-                <li>Implemented behavioral support strategies for a child with ADHD in coordination with the family's care plan.</li>
-                <li>Supported household operations during an active renovation period, including vendor coordination and logistics.</li>
+              <strong>Family Assistant &amp; Nanny to Principal</strong>
+              Private Family (HNW) &middot; Dallas, TX
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
+                Children: Ages 6 and 13 upon hire &middot; Monday&ndash;Friday, 12 pm&ndash;8 pm, with occasional weekends
+              </p>
+              <ul class="experience-bullets">
+                <li>Evolved from primary nanny to trusted household manager and family assistant, taking on increasing responsibilities as the family's needs grew and confidence in capabilities expanded.</li>
+                <li>Orchestrated all aspects of household operations &mdash; comprehensive calendar management, appointment scheduling for all family members (medical, dental, therapeutic, automotive, and personal services), and coordination of home service providers.</li>
+                <li>Managed academic support systems for both children, including maintaining communication with teachers, sourcing and scheduling tutors aligned with the children's needs, and creating learning portfolios to maintain continuity during travel.</li>
+                <li>Provided specialized behavioral guidance and emotional support for a child with ADHD, implementing effective coping strategies and structured routines in coordination with the family's care plan.</li>
+                <li>Planned and executed complex family travel arrangements including wardrobe planning, school notifications, academic work coordination, and comprehensive trip preparation.</li>
+                <li>Led event planning and execution for large-scale family celebrations &mdash; birthday parties, holiday gatherings, and staff luncheons &mdash; often serving the household's extended family network in Dallas.</li>
+                <li>Oversaw multiple home renovation projects, including a full kitchen renovation, a game room renovation, and a new home construction project, coordinating vendors and timelines throughout.</li>
+                <li>Sourced personal service providers across beauty, photography, and lifestyle categories on behalf of the principal.</li>
+                <li>Supported the parents' businesses (tech and hospitality ventures) with errands, administrative tasks, and light operational support.</li>
+                <li>Managed household inventory and financial systems using family accounts for groceries and household needs.</li>
+                <li>Contributed artwork and creative pieces for the household's interior.</li>
               </ul>
             </div>
           </li>
 
+          <!-- 2020-2021 MALLETT -->
           <li class="info-list__item">
             <span class="info-list__year">2020&ndash;2021</span>
             <div class="info-list__body">
               <strong>Nanny</strong>
               Private Family &middot; Rockwall, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Delivered full-time in-home childcare including infant and toddler care, feeding, sleep routines, and enrichment activities.</li>
-                <li>Established consistent daily structure in coordination with parents' schedules and household preferences.</li>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
+                Children: Ages 2 and 5 upon hire &middot; Monday&ndash;Friday, 7 am&ndash;6 pm
+              </p>
+              <ul class="experience-bullets">
+                <li>Guided the family through the critical pandemic-to-normalcy transition, creating a stable, comforting environment that helped the children adapt to lifestyle changes with confidence.</li>
+                <li>Successfully completed potty training for the toddler using positive reinforcement techniques and consistent daily routines.</li>
+                <li>Facilitated remote learning for the school-age child, ensuring academic continuity and engagement during an unprecedented period.</li>
+                <li>Prepared nutritious meals for breakfast, lunch, and dinner, accommodating the family's dietary preferences and nutritional needs.</li>
+                <li>Designed daily enrichment programming combining outdoor play, educational activities, creative projects, and safe socialization opportunities.</li>
+                <li>Administered medication as needed with parental consent, maintaining detailed logs of routines, milestones, and daily activities.</li>
+                <li>Managed children's laundry, light housekeeping, and transportation to activities and appointments. Provided infant care alongside the mother as needed.</li>
               </ul>
             </div>
           </li>
 
+          <!-- 2020 NGUYEN -->
           <li class="info-list__item">
             <span class="info-list__year">2020</span>
             <div class="info-list__body">
               <strong>Nanny</strong>
               Private Family &middot; Carrollton, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Provided in-home care for young children, including activity planning, meal preparation, and supervision.</li>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
+                Children: Ages 2 and 4 upon hire &middot; Monday&ndash;Friday, 9 am&ndash;5 pm &middot; COVID-era placement
+              </p>
+              <ul class="experience-bullets">
+                <li>Created structured daily routines that provided security and consistency during the uncertainty of the pandemic and school closures.</li>
+                <li>Implemented potty training protocols with patience and positive reinforcement strategies.</li>
+                <li>Supported remote learning initiatives for preschool-age children, maintaining educational momentum during school closures.</li>
+                <li>Fostered independence and decision-making skills through daily routines including outfit selection and self-care activities.</li>
+                <li>Prepared wholesome meals throughout the day and arranged safe socialization opportunities through vetted playdates and outdoor activities.</li>
+                <li>Maintained a clean, organized household environment and provided detailed parent communication on daily progress.</li>
               </ul>
             </div>
           </li>
+
         </ul>
       </section>
 
       <hr class="rule">
 
+      <!-- PROFESSIONAL / EDUCATION EXPERIENCE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">ii.</span>
-          <span class="section-title__text">Professional Experience</span>
+          <span class="section-title__text">Early Childhood &amp; Education Experience</span>
           <span class="section-title__rule"></span>
         </div>
 
@@ -168,7 +358,7 @@
             <div class="info-list__body">
               <strong>Center Director &middot; Mathnasium of Highland Park</strong>
               Dallas, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
+              <ul class="experience-bullets">
                 <li>Oversee daily operations of an academic enrichment center serving students from early childhood through high school.</li>
                 <li>Manage staff, student progress tracking, parent communication, and scheduling for a high-volume center in a competitive Dallas market.</li>
                 <li>Developed institutional communication assets including parent outreach scripts, email templates, and escalation protocols.</li>
@@ -181,8 +371,10 @@
             <div class="info-list__body">
               <strong>STEAM Teacher &middot; Amazing Explorers Academy</strong>
               Dallas, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Delivered Reggio-inspired STEAM curriculum to early childhood students across structured and exploratory learning environments.</li>
+              <ul class="experience-bullets">
+                <li>Managed classroom operations for 20+ students while maintaining organized documentation and meeting program deadlines.</li>
+                <li>Developed and implemented engaging Reggio-inspired lessons, adapting content to diverse learning needs and developmental stages.</li>
+                <li>Tracked student progress using multiple software systems and provided detailed reporting for families and administrators.</li>
                 <li>Designed hands-on lesson content integrating art, science, and engineering for ages 3&ndash;6.</li>
               </ul>
             </div>
@@ -193,9 +385,12 @@
             <div class="info-list__body">
               <strong>Lead Classroom Teacher &middot; Hope Day School</strong>
               Dallas, TX
-              <ul style="margin-top: 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.4rem; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5;">
-                <li>Managed a lead classroom serving early childhood students with a focus on developmentally appropriate practice.</li>
-                <li>Partnered with families on child development plans, behavioral observations, and progress milestones.</li>
+              <ul class="experience-bullets">
+                <li>Advanced from assistant to lead teacher within the first year, demonstrating classroom management and instructional capabilities.</li>
+                <li>Developed and implemented responsive, developmentally appropriate curriculum promoting social, physical, cognitive, and emotional growth.</li>
+                <li>Served as role model and mentor to support staff, providing guidance on best practices in early childhood education.</li>
+                <li>Facilitated regular parent conferences and maintained open communication channels to discuss children's progress, interests, and developmental needs.</li>
+                <li>Observed, documented, and reported on individual and group behaviors to support each child's optimal development.</li>
               </ul>
             </div>
           </li>
@@ -204,25 +399,104 @@
 
       <hr class="rule">
 
+      <!-- GALLERY -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">iii.</span>
-          <span class="section-title__text">Areas of Expertise &amp; Credentials</span>
+          <span class="section-title__text">Studio &amp; Practice</span>
           <span class="section-title__rule"></span>
         </div>
+        <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.6;">
+          A selection of images from ongoing teaching, studio, and enrichment practice.
+        </p>
 
-        <div class="prose prose--plain" style="max-width: 75ch;">
-          <p style="font-size: 1.0625rem; line-height: 1.8;">
-            Infant &amp; toddler care &middot; multi-home coordination &middot; travel accompaniment &middot; behavioral support (ADHD) &middot; household management &middot; personal assistant support &middot; calendar &amp; schedule management &middot; vendor sourcing &middot; meal preparation &middot; developmental activity planning &middot; Reggio Emilia &amp; Montessori frameworks &middot; private household discretion &middot; CPR &amp; First Aid certified.
-          </p>
+        <div class="gallery">
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 1</div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 2</div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 3</div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 4</div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 5</div>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__placeholder">Image 6</div>
+          </div>
         </div>
       </section>
 
       <hr class="rule">
 
+      <!-- AREAS OF EXPERTISE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">iv.</span>
+          <span class="section-title__text">Areas of Expertise</span>
+          <span class="section-title__rule"></span>
+        </div>
+
+        <div class="two-col" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4);">
+          <div>
+            <p class="label label--brass mb-3">Childcare</p>
+            <ul style="list-style: none; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9375rem; color: var(--text); line-height: 1.5;">
+              <li>Infant &amp; toddler care</li>
+              <li>Multiple age groups (infancy to late elementary)</li>
+              <li>ADHD &amp; behavioral support</li>
+              <li>Special needs awareness</li>
+              <li>Developmental milestone tracking</li>
+              <li>Potty training</li>
+              <li>Homework &amp; academic support</li>
+              <li>Remote learning facilitation</li>
+              <li>Reggio Emilia &amp; Montessori frameworks</li>
+              <li>Enrichment &amp; educational programming</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label label--brass mb-3">Household</p>
+            <ul style="list-style: none; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9375rem; color: var(--text); line-height: 1.5;">
+              <li>Calendar &amp; schedule management</li>
+              <li>Appointment coordination</li>
+              <li>Travel planning &amp; accompaniment</li>
+              <li>Event &amp; celebration planning</li>
+              <li>Multi-home coordination</li>
+              <li>Vendor &amp; service provider sourcing</li>
+              <li>Renovation &amp; project oversight</li>
+              <li>Household inventory &amp; budgets</li>
+              <li>Errands &amp; logistics</li>
+              <li>Light housekeeping &amp; children's laundry</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label label--brass mb-3">Standards</p>
+            <ul style="list-style: none; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9375rem; color: var(--text); line-height: 1.5;">
+              <li>Discretion &amp; confidentiality</li>
+              <li>NDA-compliant work</li>
+              <li>High-profile household etiquette</li>
+              <li>Parent communication</li>
+              <li>Meal planning &amp; nutrition</li>
+              <li>Medication administration</li>
+              <li>Crisis management</li>
+              <li>Cultural sensitivity</li>
+              <li>Safe driving</li>
+              <li>CPR &amp; First Aid certified</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <!-- AGENCIES -->
+      <section class="container section">
+        <div class="section-title">
+          <span class="section-title__number">v.</span>
           <span class="section-title__text">Agency Representation</span>
           <span class="section-title__rule"></span>
         </div>
@@ -238,6 +512,7 @@
 
       <hr class="rule">
 
+      <!-- REFERENCES / CTA -->
       <section class="container section">
         <div style="display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: baseline;">
           <div>
