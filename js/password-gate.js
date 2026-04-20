@@ -34,8 +34,22 @@ const TMOB_GATE_PASSWORD = 'brilliance2026';
     const attempt = input.value.trim();
     if (attempt === TMOB_GATE_PASSWORD) {
       sessionStorage.setItem('tmob_unlocked', 'true');
+      // Fire Google Analytics event on successful portfolio unlock
+      if (typeof gtag === 'function') {
+        gtag('event', 'portfolio_unlocked', {
+          event_category: 'Portfolio',
+          event_label: 'Password gate passed',
+        });
+      }
       unlock();
     } else {
+      // Track failed attempts too — useful to know if someone is trying
+      if (typeof gtag === 'function') {
+        gtag('event', 'portfolio_unlock_failed', {
+          event_category: 'Portfolio',
+          event_label: 'Incorrect password entered',
+        });
+      }
       errorEl.textContent = 'That password does not match. Please try again.';
       input.value = '';
       input.focus();
