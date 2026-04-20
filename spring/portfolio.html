@@ -14,7 +14,6 @@
     body { overflow: hidden; }
     [data-gate-content] { display: none; }
 
-    /* Portrait block */
     .portrait {
       display: grid;
       grid-template-columns: 280px 1fr;
@@ -30,11 +29,7 @@
       position: relative;
       overflow: hidden;
     }
-    .portrait__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .portrait__image img { width: 100%; height: 100%; object-fit: cover; }
     .portrait__placeholder {
       position: absolute;
       inset: 0;
@@ -84,29 +79,37 @@
       color: var(--brass);
       padding-top: 0.15rem;
     }
-    .portrait__meta dd {
-      color: var(--text);
-    }
+    .portrait__meta dd { color: var(--text); }
 
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    /* Horizontal scroll gallery */
+    .gallery-scroll {
+      display: flex;
       gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 1.5rem;
+      cursor: grab;
     }
-    .gallery__item {
-      aspect-ratio: 1 / 1;
+    .gallery-scroll:active { cursor: grabbing; }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .gallery-scroll__item {
+      flex: 0 0 320px;
+      aspect-ratio: 4 / 5;
       background: var(--white-warm);
       border: 1px solid var(--rule-soft);
       position: relative;
       overflow: hidden;
+      scroll-snap-align: start;
     }
-    .gallery__item img {
+    .gallery-scroll__item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
-    .gallery__placeholder {
+    .gallery-scroll__placeholder {
       position: absolute;
       inset: 0;
       display: grid;
@@ -117,8 +120,24 @@
       font-style: italic;
       font-size: 0.875rem;
     }
+    .gallery-hint {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .gallery-hint::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule-soft);
+    }
 
-    /* Richer bullet styling for family entries */
     .experience-bullets {
       margin-top: 0.75rem;
       padding-left: 1.25rem;
@@ -130,21 +149,14 @@
     }
 
     @media (max-width: 800px) {
-      .portrait {
-        grid-template-columns: 1fr;
-      }
-      .portrait__image {
-        max-width: 280px;
-      }
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .portrait { grid-template-columns: 1fr; }
+      .portrait__image { max-width: 280px; }
+      .gallery-scroll__item { flex: 0 0 260px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PASSWORD GATE -->
   <div class="gate" data-gate>
     <div class="gate__inner">
       <span class="label label--brass gate__label">Private · By Invitation</span>
@@ -153,15 +165,7 @@
         A password is required to view this portfolio. If you have not received one, please write to <a href="mailto:placement@brilliancemuseum.com" style="border-bottom: 1px solid var(--brass);">placement@brilliancemuseum.com</a>.
       </p>
       <form data-gate-form>
-        <input
-          type="password"
-          class="gate__input"
-          data-gate-input
-          placeholder="Enter password"
-          autocomplete="off"
-          autofocus
-          required
-        >
+        <input type="password" class="gate__input" data-gate-input placeholder="Enter password" autocomplete="off" autofocus required>
         <button type="submit" class="button">Enter</button>
         <p class="gate__error" data-gate-error></p>
       </form>
@@ -171,7 +175,6 @@
     </div>
   </div>
 
-  <!-- PRIVATE CONTENT -->
   <div data-gate-content>
     <header class="site-header">
       <div class="site-header__inner">
@@ -190,16 +193,13 @@
       <section class="container page-header">
         <span class="label label--brass page-header__label">Private Portfolio · By Invitation</span>
         <h1 class="page-header__title">Childcare &amp; Household Experience</h1>
-        <p class="page-header__lede">
-          Prepared for placement agencies and private families.
-        </p>
+        <p class="page-header__lede">Prepared for placement agencies and private families.</p>
       </section>
 
-      <!-- PORTRAIT / INTRODUCTION -->
       <section class="container">
         <div class="portrait">
           <div class="portrait__image">
-            <div class="portrait__placeholder">Portrait<br>forthcoming</div>
+            <div class="portrait__placeholder">Headshot<br>forthcoming</div>
           </div>
           <div>
             <h2 class="portrait__name">Keondra Hunter</h2>
@@ -222,7 +222,6 @@
 
       <hr class="rule">
 
-      <!-- SUMMARY -->
       <section class="container section">
         <div class="two-col">
           <div class="two-col__aside">
@@ -233,7 +232,8 @@
               Private household professional with over a decade of experience spanning early childhood education, private childcare, and personal assistant support within high-net-worth and high-profile households in Dallas and the greater Texas area.
             </p>
             <p class="prose--plain">
-              Has operated in dual capacities &mdash; as a primary nanny and as a personal assistant to the household principal &mdash; bringing genuine range to private household roles. Particular strengths include school-age childcare (ages 4–14), behavioral support, multi-home coordination, travel accompaniment, vendor sourcing, and calendar management
+              Has operated in dual capacities &mdash; as a primary nanny and as a personal assistant to the household principal &mdash; bringing genuine range to private household roles. Particular strengths include school-age childcare (ages 4&ndash;14), behavioral support, multi-home coordination, travel accompaniment, vendor sourcing, and calendar management.
+            </p>
             <p class="prose--plain">
               Accustomed to the discretion, professionalism, and adaptability expected in high-profile private households. Comfortable with non-disclosure agreements, high-security environments, and the distinct rhythms of families whose time, privacy, and consistency are paramount.
             </p>
@@ -243,7 +243,6 @@
 
       <hr class="rule">
 
-      <!-- PRIVATE FAMILY EXPERIENCE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">i.</span>
@@ -253,15 +252,12 @@
 
         <ul class="info-list">
 
-          <!-- 2022-2024 TRAVEL / HIGH-PROFILE -->
           <li class="info-list__item">
             <span class="info-list__year">2022&ndash;2024</span>
             <div class="info-list__body">
               <strong>Travel &amp; Household Nanny</strong>
               Private Family (High-Profile) &middot; Dallas, TX &middot; Houston, TX &middot; Extended Travel
-              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
-                Children: Ages 2 and 3 upon hire
-              </p>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">Children: Ages 2 and 3 upon hire</p>
               <ul class="experience-bullets">
                 <li>Served as primary nanny for two young children across multiple residences in Dallas and Houston, maintaining consistency in routine, tone, and expectations across both households.</li>
                 <li>Accompanied the family on extensive domestic travel as the designated childcare provider, including flights and extended stays &mdash; roles that require comfort with logistics, high-security environments, and discretion.</li>
@@ -272,15 +268,12 @@
             </div>
           </li>
 
-          <!-- 2021-2023 SMITH / DUAL ROLE -->
           <li class="info-list__item">
             <span class="info-list__year">2021&ndash;2023</span>
             <div class="info-list__body">
               <strong>Family Assistant &amp; Nanny to Principal</strong>
               Private Family (HNW) &middot; Dallas, TX
-              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
-                Children: Ages 6 and 13 upon hire &middot; Monday&ndash;Friday, 12 pm&ndash;8 pm, with occasional weekends
-              </p>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">Children: Ages 6 and 13 upon hire &middot; Monday&ndash;Friday, 12 pm&ndash;8 pm, with occasional weekends</p>
               <ul class="experience-bullets">
                 <li>Evolved from primary nanny to trusted household manager and family assistant, taking on increasing responsibilities as the family's needs grew and confidence in capabilities expanded.</li>
                 <li>Orchestrated all aspects of household operations &mdash; comprehensive calendar management, appointment scheduling for all family members (medical, dental, therapeutic, automotive, and personal services), and coordination of home service providers.</li>
@@ -297,15 +290,12 @@
             </div>
           </li>
 
-          <!-- 2020-2021 MALLETT -->
           <li class="info-list__item">
             <span class="info-list__year">2020&ndash;2021</span>
             <div class="info-list__body">
               <strong>Nanny</strong>
               Private Family &middot; Rockwall, TX
-              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
-                Children: Ages 2 and 5 upon hire &middot; Monday&ndash;Friday, 7 am&ndash;6 pm
-              </p>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">Children: Ages 2 and 5 upon hire &middot; Monday&ndash;Friday, 7 am&ndash;6 pm</p>
               <ul class="experience-bullets">
                 <li>Guided the family through the critical pandemic-to-normalcy transition, creating a stable, comforting environment that helped the children adapt to lifestyle changes with confidence.</li>
                 <li>Successfully completed potty training for the toddler using positive reinforcement techniques and consistent daily routines.</li>
@@ -318,15 +308,12 @@
             </div>
           </li>
 
-          <!-- 2020 NGUYEN -->
           <li class="info-list__item">
             <span class="info-list__year">2020</span>
             <div class="info-list__body">
               <strong>Nanny</strong>
               Private Family &middot; Carrollton, TX
-              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">
-                Children: Ages 2 and 4 upon hire &middot; Monday&ndash;Friday, 9 am&ndash;5 pm &middot; COVID-era placement
-              </p>
+              <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted); font-style: italic;">Children: Ages 2 and 4 upon hire &middot; Monday&ndash;Friday, 9 am&ndash;5 pm &middot; COVID-era placement</p>
               <ul class="experience-bullets">
                 <li>Created structured daily routines that provided security and consistency during the uncertainty of the pandemic and school closures.</li>
                 <li>Implemented potty training protocols with patience and positive reinforcement strategies.</li>
@@ -343,7 +330,6 @@
 
       <hr class="rule">
 
-      <!-- PROFESSIONAL / EDUCATION EXPERIENCE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">ii.</span>
@@ -398,42 +384,43 @@
 
       <hr class="rule">
 
-      <!-- GALLERY -->
+      <!-- GALLERY — HORIZONTAL SCROLL -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">iii.</span>
           <span class="section-title__text">Studio &amp; Practice</span>
           <span class="section-title__rule"></span>
         </div>
-        <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.6;">
+        <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; line-height: 1.6;">
           A selection of images from ongoing teaching, studio, and enrichment practice.
         </p>
 
-        <div class="gallery">
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 1</div>
+        <p class="gallery-hint">Scroll to view &rarr;</p>
+
+        <div class="gallery-scroll" data-gallery-scroll>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 1</div>
           </div>
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 2</div>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 2</div>
           </div>
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 3</div>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 3</div>
           </div>
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 4</div>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 4</div>
           </div>
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 5</div>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 5</div>
           </div>
-          <div class="gallery__item">
-            <div class="gallery__placeholder">Image 6</div>
+          <div class="gallery-scroll__item">
+            <div class="gallery-scroll__placeholder">Image 6</div>
           </div>
         </div>
       </section>
 
       <hr class="rule">
 
-      <!-- AREAS OF EXPERTISE -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">iv.</span>
@@ -492,14 +479,12 @@
 
       <hr class="rule">
 
-      <!-- AGENCIES -->
       <section class="container section">
         <div class="section-title">
           <span class="section-title__number">v.</span>
           <span class="section-title__text">Agency Representation</span>
           <span class="section-title__rule"></span>
         </div>
-
         <div class="prose prose--plain">
           <p>Currently represented by:</p>
           <ul style="list-style: none; padding: 0; margin-top: 1.5rem; display: grid; gap: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic;">
@@ -511,22 +496,21 @@
 
       <hr class="rule">
 
-      <!-- REFERENCES / CTA -->
       <section class="container section">
         <div class="two-col">
-  <div class="two-col__aside">
-    <span class="label label--brass">References</span>
-  </div>
-  <div>
-    <p class="serif-body" style="max-width: 50ch; margin-bottom: 2rem;">
-      Written references and contact details for past families and supervisors are available upon direct request.
-    </p>
-    <p style="font-size: 0.875rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;">Direct Inquiry</p>
-    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">
-      <a href="mailto:placement@brilliancemuseum.com?subject=Spring%20Portfolio%20·%20Reference%20Request" style="border-bottom: 1px solid var(--brass); padding-bottom: 2px;">placement@brilliancemuseum.com</a>
-    </p>
-  </div>
-</div>
+          <div class="two-col__aside">
+            <span class="label label--brass">References</span>
+          </div>
+          <div>
+            <p class="serif-body" style="max-width: 50ch; margin-bottom: 2rem;">
+              Written references and contact details for past families and supervisors are available upon direct request.
+            </p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;">Direct Inquiry</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">
+              <a href="mailto:placement@brilliancemuseum.com?subject=Spring%20Portfolio%20·%20Reference%20Request" style="border-bottom: 1px solid var(--brass); padding-bottom: 2px;">placement@brilliancemuseum.com</a>
+            </p>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -541,6 +525,28 @@
   </div>
 
   <script src="../js/password-gate.js"></script>
+  <script>
+    /* Drag-to-scroll for gallery on desktop */
+    const gallery = document.querySelector('[data-gallery-scroll]');
+    if (gallery) {
+      let isDown = false;
+      let startX, scrollLeft;
+      gallery.addEventListener('mousedown', (e) => {
+        isDown = true;
+        gallery.style.cursor = 'grabbing';
+        startX = e.pageX - gallery.offsetLeft;
+        scrollLeft = gallery.scrollLeft;
+      });
+      gallery.addEventListener('mouseleave', () => { isDown = false; gallery.style.cursor = 'grab'; });
+      gallery.addEventListener('mouseup', () => { isDown = false; gallery.style.cursor = 'grab'; });
+      gallery.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - gallery.offsetLeft;
+        gallery.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+    }
+  </script>
 
 </body>
 </html>
