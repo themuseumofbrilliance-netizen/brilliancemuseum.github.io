@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* Richer work item layout for museum-label descriptions */
     .work-entry {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -18,9 +17,7 @@
       padding: var(--space-4) 0;
       border-bottom: 1px solid var(--rule-soft);
     }
-    .work-entry:last-child {
-      border-bottom: none;
-    }
+    .work-entry:last-child { border-bottom: none; }
     .work-entry__image {
       aspect-ratio: 4 / 5;
       background: var(--white-warm);
@@ -28,11 +25,7 @@
       position: relative;
       overflow: hidden;
     }
-    .work-entry__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .work-entry__image img { width: 100%; height: 100%; object-fit: cover; }
     .work-entry__placeholder {
       position: absolute;
       inset: 0;
@@ -71,9 +64,7 @@
       letter-spacing: 0;
       text-transform: none;
     }
-    .work-entry__label .status--sold {
-      color: var(--brass);
-    }
+    .work-entry__label .status--sold { color: var(--brass); }
     .work-entry__title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -105,7 +96,40 @@
       max-width: 55ch;
     }
 
-    /* Screenplay section */
+    .install-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+    }
+    .install-grid__item {
+      overflow: hidden;
+      background: var(--white-warm);
+      border: 1px solid var(--rule-soft);
+      margin: 0;
+    }
+    .install-grid__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .install-grid__item--hero {
+      grid-row: span 2;
+      aspect-ratio: 4 / 5;
+    }
+    .install-grid__item--secondary {
+      aspect-ratio: 4 / 3;
+    }
+    .install-grid__item--wide {
+      grid-column: span 2;
+      aspect-ratio: 16 / 9;
+    }
+    @media (max-width: 760px) {
+      .install-grid { grid-template-columns: 1fr; }
+      .install-grid__item--hero { grid-row: auto; aspect-ratio: 4 / 5; }
+      .install-grid__item--wide { grid-column: auto; aspect-ratio: 16 / 9; }
+    }
+
     .screenplay-toggle {
       background: transparent;
       border: 1px solid var(--rule);
@@ -131,9 +155,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
     }
-    .screenplay-toggle.is-open .screenplay-toggle__icon {
-      transform: rotate(45deg);
-    }
+    .screenplay-toggle.is-open .screenplay-toggle__icon { transform: rotate(45deg); }
     .screenplay {
       display: none;
       margin-top: var(--space-4);
@@ -142,9 +164,7 @@
       border: 1px solid var(--rule);
       max-width: 780px;
     }
-    .screenplay.is-open {
-      display: block;
-    }
+    .screenplay.is-open { display: block; }
     .screenplay__header {
       text-align: center;
       margin-bottom: var(--space-5);
@@ -185,12 +205,8 @@
       margin-bottom: 1rem;
       display: block;
     }
-    .screenplay__body .slug:first-child {
-      margin-top: 0;
-    }
-    .screenplay__body .action {
-      margin-bottom: 1rem;
-    }
+    .screenplay__body .slug:first-child { margin-top: 0; }
+    .screenplay__body .action { margin-bottom: 1rem; }
     .screenplay__body .character {
       text-align: center;
       text-transform: uppercase;
@@ -216,9 +232,7 @@
       color: var(--text-muted);
       margin: 1.5rem 0;
     }
-    .screenplay__body em {
-      color: var(--text-muted);
-    }
+    .screenplay__body em { color: var(--text-muted); }
     .screenplay__body .end {
       text-align: center;
       letter-spacing: 0.3em;
@@ -229,12 +243,8 @@
     }
 
     @media (max-width: 800px) {
-      .work-entry {
-        grid-template-columns: 1fr;
-      }
-      .work-entry__image {
-        max-width: 360px;
-      }
+      .work-entry { grid-template-columns: 1fr; }
+      .work-entry__image { max-width: 360px; }
     }
   </style>
 </head>
@@ -269,7 +279,6 @@
       </p>
     </section>
 
-    <!-- PROJECT STATEMENT -->
     <section class="container section">
       <div class="two-col">
         <div class="two-col__aside">
@@ -300,17 +309,44 @@
 
     <hr class="rule">
 
-    <!-- WORKS -->
     <section class="container section">
       <div class="section-title">
         <span class="section-title__number">i.</span>
+        <span class="section-title__text">Installation Views</span>
+        <span class="section-title__rule"></span>
+      </div>
+
+      <p style="max-width: 60ch; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.6;">
+        Photographs from the evening of the exhibition. The Office On Perry, downtown Dallas, December 2025.
+      </p>
+
+      <div class="install-grid">
+        <figure class="install-grid__item install-grid__item--hero">
+          <img src="../images/installation-01-gallery-view.jpg" alt="Installation view showing candles lining a white cabinet with artworks on easels in the background">
+        </figure>
+        <figure class="install-grid__item install-grid__item--secondary">
+          <img src="../images/installation-02-venue-atmosphere.jpg" alt="The Hello from Dallas mural at The Office On Perry with candles and a single rose">
+        </figure>
+        <figure class="install-grid__item install-grid__item--secondary">
+          <img src="../images/installation-03-wide-view.jpg" alt="Wide view of the exhibition space under strings of bulb lights">
+        </figure>
+        <figure class="install-grid__item install-grid__item--wide">
+          <img src="../images/installation-04-opening-night.jpg" alt="Guests seated and in conversation during the opening of Shots Fired on Valentine St.">
+        </figure>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="container section">
+      <div class="section-title">
+        <span class="section-title__number">ii.</span>
         <span class="section-title__text">Works</span>
         <span class="section-title__rule"></span>
       </div>
 
       <div style="display: grid; gap: 0;">
 
-        <!-- First Night In Arrival -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -320,16 +356,15 @@
               Work No. 01
               <span class="status status--sold">· Sold</span>
             </div>
-            <h3 class="work-entry__title">First Night In Arrival</h3>
+            <h3 class="work-entry__title">First Night On The Rooftop</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic on canvas</p>
             <p class="work-entry__description">
-             Working from an elevated perspective, Keo revisits the scene from First Night on the Rooftop with a shift in vantage point. The buildings, road, and trees are constructed in flat greys, while the blue figure is rendered as a single uninterrupted shape that floats across the surface. The skewed perspective and stacked windows turn the composition into something closer to a diagram, a way of organizing memory through spatial logic. Here, the artist showcases how something can now be studied, edited, and re-entered with sharper confidence.
+              Keo renders a lone figure in blue beneath a streetlight, the body flattened against an empty parking lot. Acrylic is applied in deliberate layers: muted tones for the pavement and buildings, sharper edges for the neon sign that continues its cycle overhead. The composition holds a single moment of stillness, the figure positioned in a way that suggests pause rather than motion. By isolating form against urban infrastructure, the work gestures toward vulnerability and exposure without dramatizing it.
             </p>
           </div>
         </div>
 
-        <!-- SFOVS -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -348,7 +383,6 @@
           </div>
         </div>
 
-        <!-- Cloud To Soil -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -367,7 +401,6 @@
           </div>
         </div>
 
-        <!-- The Little Blue House -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -386,7 +419,6 @@
           </div>
         </div>
 
-        <!-- First Night At Home -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -405,7 +437,6 @@
           </div>
         </div>
 
-        <!-- Process -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -424,7 +455,6 @@
           </div>
         </div>
 
-        <!-- Untitled -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -443,7 +473,6 @@
           </div>
         </div>
 
-        <!-- Hero's Journey -->
         <div class="work-entry">
           <div class="work-entry__image">
             <div class="work-entry__placeholder">Image forthcoming</div>
@@ -467,10 +496,9 @@
 
     <hr class="rule">
 
-    <!-- SCREENPLAY -->
     <section class="container section">
       <div class="section-title">
-        <span class="section-title__number">ii.</span>
+        <span class="section-title__number">iii.</span>
         <span class="section-title__text">The Screenplay</span>
         <span class="section-title__rule"></span>
       </div>
@@ -665,7 +693,6 @@
 
     <hr class="rule">
 
-    <!-- INQUIRE -->
     <section class="container section">
       <div style="display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: baseline;">
         <div>
@@ -716,7 +743,6 @@
   </footer>
 
   <script>
-    // Mobile nav toggle
     document.querySelector('.nav-toggle')?.addEventListener('click', (e) => {
       const nav = document.querySelector('.nav');
       const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
@@ -724,7 +750,6 @@
       nav.classList.toggle('is-open');
     });
 
-    // Screenplay toggle
     const screenplayToggle = document.querySelector('[data-screenplay-toggle]');
     const screenplay = document.querySelector('[data-screenplay]');
     const screenplayLabel = document.querySelector('.screenplay-toggle__label');
