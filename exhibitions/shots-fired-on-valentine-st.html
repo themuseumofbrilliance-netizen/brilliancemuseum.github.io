@@ -27,13 +27,58 @@
     }
     .work-entry:last-child { border-bottom: none; }
     .work-entry__image {
-      aspect-ratio: 4 / 5;
       background: var(--white-warm);
       border: 1px solid var(--rule-soft);
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
-    .work-entry__image img { width: 100%; height: 100%; object-fit: cover; }
+    .work-entry__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .work-entry__image:hover { border-color: var(--brass); }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: pointer;
+      padding: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: none;
+      cursor: default;
+    }
+    .lightbox__close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      transition: color 200ms ease;
+    }
+    .lightbox__close:hover { color: #fff; }
     .work-entry__placeholder {
       position: absolute;
       inset: 0;
@@ -258,6 +303,11 @@
 </head>
 <body>
 
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close">Close</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
   <header class="site-header">
     <div class="site-header__inner">
       <a href="../index.html" class="brand">
@@ -429,7 +479,7 @@
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-05-process.jpg" alt="Process — blue figure climbing toward a neon sign against a gray cityscape viewed from above">
+            <img src="../images/artwork-05-process.jpg" alt="Process — accumulated paint marks on unstretched duck cotton">
           </div>
           <div>
             <div class="work-entry__label">
@@ -768,6 +818,36 @@
       screenplayToggle.classList.toggle('is-open');
       screenplayToggle.setAttribute('aria-expanded', String(!isOpen));
       screenplayLabel.textContent = isOpen ? 'Read the screenplay' : 'Close screenplay';
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox__close');
+
+    document.querySelectorAll('.work-entry__image').forEach(container => {
+      container.addEventListener('click', () => {
+        const img = container.querySelector('img');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
     });
   </script>
 
