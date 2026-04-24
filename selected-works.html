@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1F5WH5GK0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L1F5WH5GK0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Works · The Museum of Brilliance</title>
+  <meta name="description" content="Selected works from The Museum of Brilliance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="brand">
+        The Museum of Brilliance
+        <small>Est. Texas</small>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="nav">
+        <a href="index.html">Index</a>
+        <div class="nav__item">
+          <button class="nav__dropdown-trigger">Work <span class="nav__dropdown-arrow"></span></button>
+          <div class="nav__dropdown">
+            <a href="exhibitions/shots-fired-on-valentine-st.html">Shots Fired on Valentine St.</a>
+            <a href="selected-works.html">Selected Works</a>
+          </div>
+        </div>
+        <a href="biography.html">Biography</a>
+        <div class="nav__item">
+          <button class="nav__dropdown-trigger">Spring <span class="nav__dropdown-arrow"></span></button>
+          <div class="nav__dropdown">
+            <a href="spring.html">Spring</a>
+            <a href="spring/portfolio.html">Portfolio</a>
+            <a href="spring/books.html">Books</a>
+          </div>
+        </div>
+        <a href="inquiries.html">Inquiries</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container page-header">
+      <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
+        <a href="work.html" style="font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass); border-bottom: 1px solid var(--brass); padding-bottom: 2px;">← Return to Work</a>
+      </div>
+      <span class="label label--brass page-header__label reveal">Catalogue</span>
+      <h1 class="page-header__title reveal">Selected Works</h1>
+      <p class="page-header__lede reveal">
+        Paintings, illustration, and studio explorations outside of formal exhibition.
+      </p>
+    </section>
+
+    <section class="container section">
+      <div style="text-align: center; padding: var(--space-5) var(--space-4); border: 1px solid var(--rule); background: var(--white-warm);">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-muted);">
+          This page is being prepared. Selected works will be added as they are catalogued and photographed.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h3 class="site-footer__brand">The Museum of Brilliance</h3>
+        </div>
+        <div>
+          <p class="site-footer__label">Office of the Archive</p>
+          <p class="site-footer__text">
+            Texas<br>
+            United States<br><br>
+            <a href="mailto:contact@brilliancemuseum.com">contact@brilliancemuseum.com</a>
+          </p>
+        </div>
+        <div>
+          <p class="site-footer__label">Institutional Mandate</p>
+          <p class="site-footer__text">
+            An independent art house and studio practice working across fine art, illustration, and literature.
+          </p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <p class="site-footer__label">Index</p>
+          <a href="index.html">Home</a>
+          <a href="work.html">Work</a>
+          <a href="biography.html">Biography</a>
+          <a href="spring.html">Spring</a>
+          <a href="inquiries.html">Inquiries</a>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© 2026 The Museum of Brilliance. All rights reserved.</span>
+        <span>Est. Texas</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle')?.addEventListener('click', (e) => {
+      const nav = document.querySelector('.nav');
+      const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
+      e.currentTarget.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open');
+    });
+
+    // Dropdown nav
+    document.querySelectorAll('.nav__item').forEach(item => {
+      const trigger = item.querySelector('.nav__dropdown-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.nav__item.is-open').forEach(other => {
+          if (other !== item) other.classList.remove('is-open');
+        });
+        item.classList.toggle('is-open');
+      });
+      item.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 640) item.classList.add('is-open');
+      });
+      item.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 640) item.classList.remove('is-open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav__item.is-open').forEach(item => {
+        item.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>
