@@ -11,14 +11,14 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Portfolio · Spring · The Museum of Brilliance</title>
+  <title>Private Nanny Portfolio · The Museum of Brilliance</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Private portfolio — by invitation.">
+  <meta name="description" content="Private nanny portfolio — by invitation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="/spring-favicon.ico" sizes="32x32">
+  <link rel="icon" href="/spring-favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/spring-apple-touch-icon.png">
   <style>
     body { overflow: hidden; }
@@ -266,10 +266,11 @@
 
   <div class="gate" data-gate>
     <div class="gate__inner">
+      <img src="../images/spring-flower.png" alt="" style="width: 80px; height: auto; margin: 0 auto 2rem;">
       <span class="label label--brass gate__label">Private · By Invitation</span>
-      <h1 class="gate__title">The Spring Private Portfolio</h1>
+      <h1 class="gate__title">Nanny Portfolio</h1>
       <p class="gate__help">
-        A password is required to view this portfolio. If you have not received one, please write to <a href="mailto:placement@brilliancemuseum.com" style="border-bottom: 1px solid var(--brass);">placement@brilliancemuseum.com</a>.
+        This portfolio is prepared for placement agencies and private families. If you have not received a password, please write to <a href="mailto:contact.keondra@gmail.com" style="border-bottom: 1px solid var(--brass);">contact.keondra@gmail.com</a>.
       </p>
       <form data-gate-form>
         <input type="password" class="gate__input" data-gate-input placeholder="Enter password" autocomplete="off" autofocus required>
@@ -289,7 +290,8 @@
           The Museum of Brilliance
           <small>Spring · Private Portfolio</small>
         </a>
-     <nav class="nav">
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <nav class="nav">
           <a href="../index.html">Index</a>
           <div class="nav__item">
             <button class="nav__dropdown-trigger">Work <span class="nav__dropdown-arrow"></span></button>
@@ -630,7 +632,7 @@
             </p>
             <p style="font-size: 0.875rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;">Direct Inquiry</p>
             <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">
-              <a href="mailto:placement@brilliancemuseum.com?subject=Spring%20Portfolio%20·%20Reference%20Request" style="border-bottom: 1px solid var(--brass); padding-bottom: 2px;">placement@brilliancemuseum.com</a>
+              <a href="mailto:contact.keondra@gmail.com?subject=Nanny%20Portfolio%20·%20Reference%20Request" style="border-bottom: 1px solid var(--brass); padding-bottom: 2px;">contact.keondra@gmail.com</a>
             </p>
           </div>
         </div>
@@ -658,6 +660,36 @@
 
   <script src="../js/password-gate.js"></script>
   <script>
+    document.querySelector('.nav-toggle')?.addEventListener('click', (e) => {
+      const nav = document.querySelector('.nav');
+      const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
+      e.currentTarget.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open');
+    });
+
+    // Dropdown nav
+    document.querySelectorAll('.nav__item').forEach(item => {
+      const trigger = item.querySelector('.nav__dropdown-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.nav__item.is-open').forEach(other => {
+          if (other !== item) other.classList.remove('is-open');
+        });
+        item.classList.toggle('is-open');
+      });
+      item.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 640) item.classList.add('is-open');
+      });
+      item.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 640) item.classList.remove('is-open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav__item.is-open').forEach(item => {
+        item.classList.remove('is-open');
+      });
+    });
+
     /* Drag-to-scroll for gallery on desktop */
     const gallery = document.querySelector('[data-gallery-scroll]');
     if (gallery) {
@@ -711,7 +743,6 @@
 
       images.forEach((img, index) => {
         img.addEventListener('click', (e) => {
-          // Only open if user didn't drag
           if (!hasMoved) openLightbox(index);
         });
       });
@@ -730,28 +761,6 @@
         if (e.key === 'ArrowRight') showNext();
         if (e.key === 'ArrowLeft') showPrev();
       });
-      // Dropdown nav
-    document.querySelectorAll('.nav__item').forEach(item => {
-      const trigger = item.querySelector('.nav__dropdown-trigger');
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        document.querySelectorAll('.nav__item.is-open').forEach(other => {
-          if (other !== item) other.classList.remove('is-open');
-        });
-        item.classList.toggle('is-open');
-      });
-      item.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 640) item.classList.add('is-open');
-      });
-      item.addEventListener('mouseleave', () => {
-        if (window.innerWidth > 640) item.classList.remove('is-open');
-      });
-    });
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav__item.is-open').forEach(item => {
-        item.classList.remove('is-open');
-      });
-    });
     }
   </script>
 
