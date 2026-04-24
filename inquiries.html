@@ -27,11 +27,24 @@
         <small>Est. Dallas</small>
       </a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-      <nav class="nav">
+<nav class="nav">
         <a href="index.html">Index</a>
-        <a href="work.html">Work</a>
+        <div class="nav__item">
+          <button class="nav__dropdown-trigger">Work <span class="nav__dropdown-arrow"></span></button>
+          <div class="nav__dropdown">
+            <a href="exhibitions/shots-fired-on-valentine-st.html">Shots Fired on Valentine St.</a>
+            <a href="selected-works.html">Selected Works</a>
+          </div>
+        </div>
         <a href="biography.html">Biography</a>
-        <a href="spring.html">Spring</a>
+        <div class="nav__item">
+          <button class="nav__dropdown-trigger">Spring <span class="nav__dropdown-arrow"></span></button>
+          <div class="nav__dropdown">
+            <a href="spring.html">Spring</a>
+            <a href="spring/portfolio.html">Portfolio</a>
+            <a href="spring/books.html">Books</a>
+          </div>
+        </div>
         <a href="inquiries.html" aria-current="page">Inquiries</a>
       </nav>
     </div>
@@ -137,6 +150,28 @@
       const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
       e.currentTarget.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('is-open');
+    });
+    // Dropdown nav
+    document.querySelectorAll('.nav__item').forEach(item => {
+      const trigger = item.querySelector('.nav__dropdown-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.nav__item.is-open').forEach(other => {
+          if (other !== item) other.classList.remove('is-open');
+        });
+        item.classList.toggle('is-open');
+      });
+      item.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 640) item.classList.add('is-open');
+      });
+      item.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 640) item.classList.remove('is-open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav__item.is-open').forEach(item => {
+        item.classList.remove('is-open');
+      });
     });
   </script>
 
