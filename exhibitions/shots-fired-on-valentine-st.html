@@ -69,18 +69,50 @@
       top: 1.5rem;
       right: 2rem;
       background: none;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.3);
       color: rgba(255,255,255,0.7);
-      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-      transition: color 200ms ease;
+      transition: background 200ms ease, color 200ms ease;
     }
-    .lightbox__close:hover { color: #fff; }
+    .lightbox__close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.7);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 200ms ease;
+    }
+    .lightbox__nav:hover { background: rgba(255,255,255,0.1); }
+    .lightbox__nav--prev { left: 1.5rem; }
+    .lightbox__nav--next { right: 1.5rem; }
+    .lightbox__counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
     .work-entry__placeholder {
       position: absolute;
       inset: 0;
@@ -306,8 +338,11 @@
 <body>
 
   <div class="lightbox" id="lightbox">
-    <button class="lightbox__close">Close</button>
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous">&larr;</button>
     <img src="" alt="" id="lightbox-img">
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next">&rarr;</button>
+    <div class="lightbox__counter" id="lightbox-counter"></div>
   </div>
 
   <header class="site-header">
@@ -317,24 +352,32 @@
         <small>Est. Texas</small>
       </a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-<nav class="nav">
+      <nav class="nav">
         <a href="../index.html">Index</a>
+
         <div class="nav__item">
-          <button class="nav__dropdown-trigger">Work <span class="nav__dropdown-arrow"></span></button>
+          <button class="nav__dropdown-trigger">
+            Work <span class="nav__dropdown-arrow"></span>
+          </button>
           <div class="nav__dropdown">
-            <a href="shots-fired-on-valentine-st.html">Shots Fired on Valentine St.</a>
+            <a href="../exhibitions/shots-fired-on-valentine-st.html">Shots Fired on Valentine St.</a>
             <a href="../selected-works.html">Selected Works</a>
           </div>
         </div>
+
         <a href="../biography.html">Biography</a>
+
         <div class="nav__item">
-          <button class="nav__dropdown-trigger">Spring <span class="nav__dropdown-arrow"></span></button>
+          <button class="nav__dropdown-trigger">
+            Spring <span class="nav__dropdown-arrow"></span>
+          </button>
           <div class="nav__dropdown">
             <a href="../spring.html">Spring</a>
             <a href="../spring/portfolio.html">Portfolio</a>
             <a href="../spring/books.html">Books</a>
           </div>
         </div>
+
         <a href="../inquiries.html">Inquiries</a>
       </nav>
     </div>
@@ -422,145 +465,118 @@
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-01-first-night-on-the-rooftop.jpg" alt="First Night on the Rooftop — acrylic painting of a blue figure beneath a streetlight in an empty parking lot">
+            <img src="../images/artwork-01-first-night-on-the-rooftop.jpg" alt="First Night on the Rooftop">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 01
-              <span class="status status--sold">· Sold</span>
-            </div>
+            <div class="work-entry__label">Work No. 01 <span class="status status--sold">&middot; Sold</span></div>
             <h3 class="work-entry__title">First Night On The Rooftop</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic on canvas</p>
-            <p class="work-entry__description">
-              Keo renders a lone figure in blue beneath a streetlight, the body flattened against an empty parking lot. Acrylic is applied in deliberate layers: muted tones for the pavement and buildings, sharper edges for the neon sign that continues its cycle overhead. The composition holds a single moment of stillness, the figure positioned in a way that suggests pause rather than motion. By isolating form against urban infrastructure, the work gestures toward vulnerability and exposure without dramatizing it.
-            </p>
+            <p class="work-entry__description">Keo renders a lone figure in blue beneath a streetlight, the body flattened against an empty parking lot. Acrylic is applied in deliberate layers: muted tones for the pavement and buildings, sharper edges for the neon sign that continues its cycle overhead. The composition holds a single moment of stillness, the figure positioned in a way that suggests pause rather than motion. By isolating form against urban infrastructure, the work gestures toward vulnerability and exposure without dramatizing it.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-02-cloud-to-soil.jpg" alt="Cloud to Soil — blue figure bending forward against a rust-red ground, arm extended into thick paint">
+            <img src="../images/artwork-02-first-time-in-arrival.jpg" alt="First Time In Arrival">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 02
-              <span class="status">· Available</span>
-            </div>
+            <div class="work-entry__label">Work No. 02 <span class="status status--sold">&middot; Sold</span></div>
+            <h3 class="work-entry__title">First Time In Arrival</h3>
+            <p class="work-entry__year">2025</p>
+            <p class="work-entry__medium">Acrylic on canvas</p>
+            <p class="work-entry__description">Working from an elevated perspective, Keo revisits the scene from <em>First Night on the Rooftop</em> with a shift in vantage point. The buildings, road, and trees are constructed in flat greys, while the blue figure is rendered as a single uninterrupted shape that floats across the surface. The skewed perspective and stacked windows turn the composition into something closer to a diagram, a way of organizing memory through spatial logic. Here, the artist showcases how something can now be studied, edited, and re-entered with sharper confidence.</p>
+          </div>
+        </div>
+
+        <div class="work-entry">
+          <div class="work-entry__image">
+            <img src="../images/artwork-03-cloud-to-soil.jpg" alt="Cloud to Soil">
+          </div>
+          <div>
+            <div class="work-entry__label">Work No. 03 <span class="status">&middot; Available</span></div>
             <h3 class="work-entry__title">Cloud To Soil</h3>
             <p class="work-entry__year">2023</p>
             <p class="work-entry__medium">Acrylic on canvas</p>
-            <p class="work-entry__description">
-              A dark blue figure bends forward against a rust-red field, arm extended into a thick patch of layered, dragged acrylic. The pale "soil" is built through repeated gestures, left rough and unresolved. Keo uses the physical weight of paint to anchor abstraction, letting the surface carry what language might struggle to hold. <em>Cloud To Soil</em> comes from taking old, heavy experiences and refusing to leave them floating in your head. Here they're dragged down into the ground instead &mdash; pressed into a place where they can act like compost, feeding whatever decides to grow next.
-            </p>
+            <p class="work-entry__description">A dark blue figure bends forward against a rust-red field, arm extended into a thick patch of layered, dragged acrylic. The pale &ldquo;soil&rdquo; is built through repeated gestures, left rough and unresolved. Keo uses the physical weight of paint to anchor abstraction, letting the surface carry what language might struggle to hold. <em>Cloud To Soil</em> comes from taking old, heavy experiences and refusing to leave them floating in your head. Here they&rsquo;re dragged down into the ground instead &mdash; pressed into a place where they can act like compost, feeding whatever decides to grow next.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-03-the-little-blue-house.jpg" alt="The Little Blue House — deep blue painting with a small glowing house shape in the distance">
+            <img src="../images/artwork-04-the-little-blue-house.jpg" alt="The Little Blue House">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 03
-              <span class="status">· Available</span>
-            </div>
+            <div class="work-entry__label">Work No. 04 <span class="status">&middot; Available</span></div>
             <h3 class="work-entry__title">The Little Blue House</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic and oil pastels on canvas</p>
-            <p class="work-entry__description">
-              Working from a found photograph, Keo reduces the scene to its essential elements: a field, a deep blue sky, and a single glowing blue house in the distance. The house is blocked in with acrylic, then built up with oil pastel until the color pushes past natural, reading more as signal than structure. A small figure stands back and observes. The work folds looking into considering, watching a life lit up across the grass before deciding what comes next.
-            </p>
+            <p class="work-entry__description">Working from a found photograph, Keo reduces the scene to its essential elements: a field, a deep blue sky, and a single glowing blue house in the distance. The house is blocked in with acrylic, then built up with oil pastel until the color pushes past natural, reading more as signal than structure. A small figure stands back and observes. The work folds looking into considering, watching a life lit up across the grass before deciding what comes next.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-04-first-night-at-home.jpg" alt="First Night at Home — two painted pillowcases with red letters on dark textile grounds">
+            <img src="../images/artwork-05-first-night-at-home.jpg" alt="First Night at Home">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 04
-              <span class="status status--sold">· Sold</span>
-            </div>
+            <div class="work-entry__label">Work No. 05 <span class="status status--sold">&middot; Sold</span></div>
             <h3 class="work-entry__title">First Night At Home</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic and oil pastels on pillowcase</p>
-            <p class="work-entry__description">
-              By painting directly onto pillowcases, Keo transforms functional objects into surfaces for memory and intimacy. The red letters emerge through layered acrylic and oil pastel, their glow recalling signage but subdued by the fabric's domestic softness. Here, the artist uses materials and text to evoke a threshold moment &mdash; one where unfamiliarity quietly settles into something closer.
-            </p>
+            <p class="work-entry__description">By painting directly onto pillowcases, Keo transforms functional objects into surfaces for memory and intimacy. The red letters emerge through layered acrylic and oil pastel, their glow recalling signage but subdued by the fabric&rsquo;s domestic softness. Here, the artist uses materials and text to evoke a threshold moment &mdash; one where unfamiliarity quietly settles into something closer.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-05-process.jpg" alt="Process — accumulated paint marks on unstretched duck cotton">
+            <img src="../images/artwork-06-process.jpg" alt="Process">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 05
-              <span class="status">· Available</span>
-            </div>
+            <div class="work-entry__label">Work No. 06 <span class="status">&middot; Available</span></div>
             <h3 class="work-entry__title">Process</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic on duck cotton</p>
-            <p class="work-entry__description">
-              Laid flat in the studio for months, this unstretched duck cotton has accumulated test marks, wiped brushes, dropped pastels, and overspray from other works. Angles of color stop abruptly where canvases once sat, leaving ghost borders and overlapping sweeps of paint. Nothing here was planned, but every layer records a decision made elsewhere in the studio. Keo reframes the drop cloth as the main event, a single surface that holds the accumulation and rhythm of building an exhibition.
-            </p>
+            <p class="work-entry__description">Laid flat in the studio for months, this unstretched duck cotton has accumulated test marks, wiped brushes, dropped pastels, and overspray from other works. Angles of color stop abruptly where canvases once sat, leaving ghost borders and overlapping sweeps of paint. Nothing here was planned, but every layer records a decision made elsewhere in the studio. Keo reframes the drop cloth as the main event, a single surface that holds the accumulation and rhythm of building an exhibition.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-06-untitled.jpg" alt="Untitled — two blue outline figures in a foggy forest, one offering a red rose to the other">
+            <img src="../images/artwork-07-untitled.jpg" alt="Untitled">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 06
-              <span class="status status--sold">· Sold</span>
-            </div>
+            <div class="work-entry__label">Work No. 07 <span class="status status--sold">&middot; Sold</span></div>
             <h3 class="work-entry__title">Untitled</h3>
             <p class="work-entry__year">2025</p>
             <p class="work-entry__medium">Acrylic on canvas</p>
-            <p class="work-entry__description">
-              Two outline figures stand against a misted forest, rendered as blue contour drawings atop a softly painted ground. One offers a red rose; the other appears mid-step, hand raised, uncommitted. The composition holds the pair in a moment of proposition and hesitation &mdash; bodies drawn in the vocabulary of anatomical study, as if the relationship itself is still being diagrammed.
-            </p>
+            <p class="work-entry__description">Two outline figures stand against a misted forest, rendered as blue contour drawings atop a softly painted ground. One offers a red rose; the other appears mid-step, hand raised, uncommitted. The composition holds the pair in a moment of proposition and hesitation &mdash; bodies drawn in the vocabulary of anatomical study, as if the relationship itself is still being diagrammed.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-07-heros-journey.jpg" alt="Hero's Journey — a shaded sphere beside a diagram of arrows and annotations on a gray ground">
+            <img src="../images/artwork-08-heros-journey.jpg" alt="Hero's Journey">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 07
-              <span class="status status--sold">· Sold</span>
-            </div>
-            <h3 class="work-entry__title">Hero's Journey</h3>
+            <div class="work-entry__label">Work No. 08 <span class="status status--sold">&middot; Sold</span></div>
+            <h3 class="work-entry__title">Hero&rsquo;s Journey</h3>
             <p class="work-entry__year">2022</p>
             <p class="work-entry__medium">Acrylic on canvas</p>
-            <p class="work-entry__description">
-              On the left, a sphere sits carefully shaded against a muted, cloudy ground. On the right, that same sphere is pulled apart into a chart of arrows, notes, and pathways. Keo treats the process of understanding as a visual problem: beginning with something simple and solid, then overworking it into a diagram of possible outcomes. The split composition mirrors the way introspection can become recursive, mapping and remapping until the original form is nearly obscured.
-            </p>
+            <p class="work-entry__description">On the left, a sphere sits carefully shaded against a muted, cloudy ground. On the right, that same sphere is pulled apart into a chart of arrows, notes, and pathways. Keo treats the process of understanding as a visual problem: beginning with something simple and solid, then overworking it into a diagram of possible outcomes. The split composition mirrors the way introspection can become recursive, mapping and remapping until the original form is nearly obscured.</p>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-entry__image">
-            <img src="../images/artwork-08-love-and-vulnerability.jpg" alt="Love and Vulnerability — two hooded figures, one red and one blue, standing on a gold sphere against a black sky">
+            <img src="../images/artwork-09-love-and-vulnerability.jpg" alt="Love and Vulnerability">
           </div>
           <div>
-            <div class="work-entry__label">
-              Work No. 08
-              <span class="status status--sold">· Sold</span>
-            </div>
-            <h3 class="work-entry__title">Love and Vulnerability</h3>
-            <p class="work-entry__year">2025</p>
-            <p class="work-entry__medium">Acrylic on canvas</p>
-            <p class="work-entry__description">
-              Two figures &mdash; one red, one blue &mdash; stand on a gold sphere suspended in darkness, a small red orb hanging above them like a signal or a wound. The red figure towers, elongated and pointed, its posture sharp and closed. The blue figure is softer, shorter, its body open with a small heart visible at center. Keo stages the encounter as an anatomy of opposites: armor beside exposure, height beside tenderness, silence beside the willingness to be seen. The raw canvas edges remain visible, grounding the image in its own making.
-            </p>
+            <div class="work-entry__label">Work No. 09 <span class="status status--sold">&middot; Sold</span></div>
+            <h3 class="work-entry__title">Love &amp; Vulnerability</h3>
+            <p class="work-entry__year">2022</p>
+            <p class="work-entry__medium">Acrylic on duck cotton fabric</p>
+            <p class="work-entry__description">Painted onto unstretched duck cotton, two cloaked forms occupy a small patch of ground within a rough black window cut from the raw fabric. One figure is tall and red with a sharp, beak-like hood; the other is smaller and blue, with a heart visible through its chest. Their shadows lean toward each other beneath a distant red moon. By working directly on fabric and leaving the edges unfinished, Keo collapses the boundary between object and image, letting the material itself become part of the exchange between protection and exposure.</p>
           </div>
         </div>
 
@@ -822,48 +838,6 @@
       e.currentTarget.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('is-open');
     });
-
-    const screenplayToggle = document.querySelector('[data-screenplay-toggle]');
-    const screenplay = document.querySelector('[data-screenplay]');
-    const screenplayLabel = document.querySelector('.screenplay-toggle__label');
-
-    screenplayToggle?.addEventListener('click', () => {
-      const isOpen = screenplay.classList.contains('is-open');
-      screenplay.classList.toggle('is-open');
-      screenplayToggle.classList.toggle('is-open');
-      screenplayToggle.setAttribute('aria-expanded', String(!isOpen));
-      screenplayLabel.textContent = isOpen ? 'Read the screenplay' : 'Close screenplay';
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.querySelector('.lightbox__close');
-
-    document.querySelectorAll('.work-entry__image').forEach(container => {
-      container.addEventListener('click', () => {
-        const img = container.querySelector('img');
-        if (img) {
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt;
-          lightbox.classList.add('is-open');
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-
-    lightboxClose?.addEventListener('click', closeLightbox);
-    lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
     // Dropdown nav
     document.querySelectorAll('.nav__item').forEach(item => {
       const trigger = item.querySelector('.nav__dropdown-trigger');
@@ -885,6 +859,58 @@
       document.querySelectorAll('.nav__item.is-open').forEach(item => {
         item.classList.remove('is-open');
       });
+    });
+
+    const screenplayToggle = document.querySelector('[data-screenplay-toggle]');
+    const screenplay = document.querySelector('[data-screenplay]');
+    const screenplayLabel = document.querySelector('.screenplay-toggle__label');
+
+    screenplayToggle?.addEventListener('click', () => {
+      const isOpen = screenplay.classList.contains('is-open');
+      screenplay.classList.toggle('is-open');
+      screenplayToggle.classList.toggle('is-open');
+      screenplayToggle.setAttribute('aria-expanded', String(!isOpen));
+      screenplayLabel.textContent = isOpen ? 'Read the screenplay' : 'Close screenplay';
+    });
+
+    // Lightbox with prev/next
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const workImages = Array.from(document.querySelectorAll('.work-entry__image img'));
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = workImages[index].src;
+      lightboxImg.alt = workImages[index].alt || '';
+      lightboxCounter.textContent = (index + 1) + ' / ' + workImages.length;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function showNext() { openLightbox((currentIndex + 1) % workImages.length); }
+    function showPrev() { openLightbox((currentIndex - 1 + workImages.length) % workImages.length); }
+
+    document.querySelectorAll('.work-entry__image').forEach((container, i) => {
+      container.addEventListener('click', () => openLightbox(i));
+    });
+
+    document.querySelector('.lightbox__close')?.addEventListener('click', closeLightbox);
+    lightboxPrev?.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    lightboxNext?.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    lightboxImg?.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
     });
   </script>
 
