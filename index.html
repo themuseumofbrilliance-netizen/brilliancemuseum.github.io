@@ -28,8 +28,8 @@
         The Museum of Brilliance
         <small>Est. Texas</small>
       </a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-     <nav class="nav">
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <nav class="nav">
         <a href="index.html" aria-current="page">Index</a>
         <div class="nav__item">
           <button class="nav__dropdown-trigger">Work <span class="nav__dropdown-arrow"></span></button>
@@ -91,7 +91,7 @@
 
         <a href="work.html" class="exhibition-card">
           <div class="exhibition-card__image">
-            <img src="images/work-tile-shots-fired.jpg" alt="Selected Works — painting detail">
+            <div class="exhibition-card__placeholder">Image forthcoming</div>
           </div>
           <div class="exhibition-card__meta">
             <h3 class="exhibition-card__title">Selected Works</h3>
@@ -156,7 +156,7 @@
       const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
       e.currentTarget.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('is-open');
-    }); // Dropdown nav
+    });
     document.querySelectorAll('.nav__item').forEach(item => {
       const trigger = item.querySelector('.nav__dropdown-trigger');
       trigger.addEventListener('click', (e) => {
