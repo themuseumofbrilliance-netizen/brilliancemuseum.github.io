@@ -207,8 +207,8 @@
   .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
 
-/* Header-only tonal separation: a muted, siding-colored light layer.
-   No white plateau, blur, frosted surface, rectangular mask, or text changes. */
+/* Existing header panel: one creamy ivory surface, 93% opaque across both
+   text blocks, fading only at the outer edges. No new layer or text changes. */
 .gallery-intro::before {
   display: block;
   content: "";
@@ -217,17 +217,19 @@
   z-index: 0;
   pointer-events: none;
   opacity: 1;
+  --header-panel-feather: 24px;
   background: linear-gradient(to bottom,
-    rgb(232 231 211 / 0%) 0%,
-    rgb(232 231 211 / 26%) 18%,
-    rgb(232 231 211 / 46%) 34%,
-    rgb(232 231 211 / 46%) 66%,
-    rgb(232 231 211 / 26%) 82%,
-    rgb(232 231 211 / 0%) 100%);
+    rgb(248 243 232 / 0%) 0%,
+    rgb(248 243 232 / 93%) var(--header-panel-feather),
+    rgb(248 243 232 / 93%) calc(100% - var(--header-panel-feather)),
+    rgb(248 243 232 / 0%) 100%);
   -webkit-mask: none;
   mask: none;
 }
 .gallery-intro > h1, .gallery-intro > .intro-copy {
   position: relative;
   z-index: 1;
+}
+@media (max-width: 640px) {
+  .gallery-intro::before { --header-panel-feather: 12px; }
 }
