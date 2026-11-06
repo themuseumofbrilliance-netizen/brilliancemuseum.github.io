@@ -11,6 +11,7 @@
   let category = 'all';
   function filterWorks() {
     const query = search.value.trim().toLocaleLowerCase();
+    gallery.classList.toggle('is-filtered', category !== 'all' || Boolean(query));
     let count = 0;
     works.forEach(work => {
       const matchesCategory = category === 'all' || work.dataset.categories.split(' ').includes(category);

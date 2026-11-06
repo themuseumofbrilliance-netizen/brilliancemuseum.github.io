@@ -37,3 +37,22 @@ No Spring or nanny portfolio files are included in the preview or modified.
 
 Check Artworks appearance and interactions in Safari on desktop and mobile.
 Browser/device screenshot QA is unavailable in the current environment.
+
+## Botanical mosaic revision
+
+The wall now continues behind the entire Artworks page, with a dedicated decorative
+sage siding / dappled-shadow / lower-edge flower asset. It is generated scenery
+adapted from the approved stylized homepage, contains no artworks, and does not
+use the rejected original-house-photo experiment or any mockup paintings.
+
+Ten existing work cards are regrouped into an opening large/stacked/tall mosaic,
+a row of portrait-format works, and a closing landscape/screenplay pairing. Images
+retain their proportions and use contain, not cover; source JPEGs are unchanged.
+Individual beige mats and wide gaps are removed. Desktop captions appear on hover
+or keyboard focus; touch captions are visible, and mobile captions sit below images.
+Filter/search mode switches to compact natural-ratio columns to avoid empty mosaic
+slots. The filtering/search logic and catalogue records are otherwise unchanged.
+
+artworks-review.html provides real 1440px and 390px iframe widths, scaling desktop
+to fit an iPad. Direct-page links remain available for normal responsive review.
+The source homepage and all shared typography/navigation files remain unchanged.

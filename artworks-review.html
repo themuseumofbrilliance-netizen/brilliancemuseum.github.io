@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Artworks — Desktop and mobile review</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#e8eadf;color:#43152f;font:14px Arial,sans-serif}
+    header{padding:14px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#f6f1e8;border-bottom:1px solid #c9ceba}
+    button,a{padding:10px 14px;color:inherit}button{border:1px solid #43152f;background:transparent;min-height:44px;cursor:pointer}
+    button[aria-pressed=true]{background:#43152f;color:#f6f1e8}small{display:block;margin-top:3px}
+    #stage{margin:14px auto;overflow:hidden;background:#dce4d0}iframe{display:block;border:0;transform-origin:top left;background:#dce4d0}
+  </style>
+</head>
+<body>
+  <header id="review-header">
+    <div><strong>Artworks · Botanical mosaic review</strong><small>Separate development preview</small></div>
+    <button type="button" data-width="1440" aria-pressed="true">Desktop · 1440px</button>
+    <button type="button" data-width="390" aria-pressed="false">Mobile · 390px</button>
+    <a href="selected-works.html">Open Artworks directly</a>
+    <a href="index.html">Homepage</a>
+    <small>Scroll inside the preview. Desktop is scaled to fit your screen.</small>
+  </header>
+  <main id="stage"><iframe id="review-frame" src="selected-works.html" title="Artworks page at the selected screen width"></iframe></main>
+  <script>
+    (() => {
+      let width = 1440;
+      const stage = document.querySelector('#stage');
+      const frame = document.querySelector('#review-frame');
+      const buttons = [...document.querySelectorAll('button[data-width]')];
+      function fit() {
+        const available = Math.max(250, document.documentElement.clientWidth - 24);
+        const scale = Math.min(1, available / width);
+        const height = Math.max(320, window.innerHeight - document.querySelector('#review-header').offsetHeight - 30);
+        stage.style.width = width * scale + 'px';
+        stage.style.height = height + 'px';
+        frame.style.width = width + 'px';
+        frame.style.height = height / scale + 'px';
+        frame.style.transform = 'scale(' + scale + ')';
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.width) === width)));
+      }
+      buttons.forEach(button => button.addEventListener('click', () => { width = Number(button.dataset.width); fit(); }));
+      window.addEventListener('resize', fit);
+      fit();
+    })();
+  </script>
+</body>
+</html>

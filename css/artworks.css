@@ -95,7 +95,7 @@
   .artwork-view { min-height: 140px; padding: 8px; }
   .artwork-view img { height: auto; max-height: 500px; object-fit: contain; }
   .artwork-caption h2 { font-size: 22px; }
-  .artwork:nth-child(2) .artwork-caption h2, .artwork:nth-child(3) .artwork-caption h2 { font-size: 19px; }
+  .artwork[data-record="details-work-02"] .artwork-caption h2, .artwork[data-record="details-work-03"] .artwork-caption h2 { font-size: 19px; }
   .script-cover { min-height: 220px; padding: 1.3rem; }
   .script-cover .script-title { font-size: 35px; }
   .gallery-end { min-height: 170px; background-size: 165% auto; padding: 1.2rem 16%; }
@@ -105,4 +105,104 @@
   .dialog-copy { padding: 1.5rem; }
   .dialog-toolbar { position: sticky; top: 0; background: var(--ivory); z-index: 1; flex-wrap: wrap; gap: .5rem; }
   .dialog-toolbar button { font-size: 11px; padding: .4rem .6rem; }
+}
+
+/* Botanical gallery revision. Existing typography declarations are unchanged. */
+.artworks-page {
+  background-color: #dce4d0;
+  background-image: url('../images/artworks-garden-wall.webp');
+  background-position: center top;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.artworks-page .masthead { background: rgb(246 241 232 / 28%); border-bottom-color: #929d81; }
+.gallery-intro { background: transparent; }
+.gallery-intro::before { display: none; }
+.gallery-tools { background: rgb(246 241 232 / 15%); border-bottom-color: #a9b498; }
+.gallery-meta { color: var(--plum); }
+#gallery.gallery-grid {
+  display: block;
+  margin: 0 3% 1.4rem;
+  padding: clamp(7px, .8vw, 12px);
+  border: 0;
+  background: #faf7ef;
+}
+.mosaic-group { display: grid; min-width: 0; min-height: 0; gap: clamp(5px, .65vw, 10px); }
+.mosaic-group + .mosaic-group { margin-top: clamp(5px, .65vw, 10px); }
+.mosaic-group--opening { grid-template-columns: 1.211fr .628fr .7905fr; aspect-ratio: 2.63; }
+.mosaic-stack { display: grid; grid-template-rows: 1.286fr 1.226fr; min-width: 0; min-height: 0; gap: clamp(5px, .65vw, 10px); }
+.mosaic-group--portraits { grid-template-columns: .75fr .75fr .8025fr .5025fr; aspect-ratio: 2.805; }
+.mosaic-group--closing { grid-template-columns: 1.338fr .78fr; aspect-ratio: 2.118; }
+#gallery .artwork {
+  display: block;
+  position: relative;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  min-width: 0;
+  min-height: 0;
+}
+#gallery .artwork-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+#gallery .artwork-view img { display: block; width: 100%; height: 100%; max-height: none; object-fit: contain; }
+#gallery .artwork-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: .75rem .9rem;
+  background: rgb(246 241 232 / 96%);
+  opacity: 0;
+  pointer-events: none;
+}
+#gallery .artwork:hover .artwork-caption,
+#gallery .artwork:focus-within .artwork-caption { opacity: 1; }
+#gallery .artwork-view:focus-visible { outline-offset: -4px; outline-width: 3px; }
+#gallery .script-cover {
+  display: flex;
+  padding: clamp(16px, 3vw, 45px);
+  background: #e8ebdf;
+}
+#gallery.is-filtered { column-count: 3; column-gap: clamp(5px, .65vw, 10px); }
+#gallery.is-filtered .mosaic-group, #gallery.is-filtered .mosaic-stack { display: contents; }
+#gallery.is-filtered .artwork { break-inside: avoid; margin-bottom: clamp(5px, .65vw, 10px); }
+#gallery.is-filtered .artwork-view, #gallery.is-filtered .artwork-view img { height: auto; }
+#gallery.is-filtered .script-cover { min-height: 330px; }
+.gallery-empty { background: rgb(246 241 232 / 88%); }
+.gallery-end {
+  min-height: clamp(190px, 24vw, 380px);
+  margin-top: 0;
+  padding-top: 1.4rem;
+  border-top: 0;
+  background: url('../images/artworks-garden-wall.webp') center 88% / 100% auto no-repeat;
+}
+.gallery-end p { background: rgb(246 241 232 / 90%); }
+.artworks-page .footer { background: rgb(246 241 232 / 90%); color: var(--plum); }
+.artworks-page .footer-location { border-color: #9ba386; }
+.artworks-page .copyright { border-color: #aeb79d; }
+@media (max-width: 950px) and (min-width: 641px) {
+  #gallery.is-filtered { column-count: 2; }
+}
+@media (hover: none) and (min-width: 641px) {
+  #gallery .artwork-caption { opacity: 1; padding: .5rem; }
+}
+@media (max-width: 640px) {
+  .artworks-page { background-size: auto 100%; }
+  .artworks-page .masthead { background: rgb(246 241 232 / 62%); }
+  #gallery.gallery-grid { margin: 0 4% 1rem; padding: 6px; }
+  .mosaic-group { gap: 6px; }
+  .mosaic-group + .mosaic-group { margin-top: 6px; }
+  .mosaic-group--opening, .mosaic-group--closing { grid-template-columns: 1fr; aspect-ratio: auto; }
+  .mosaic-stack { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 6px; align-items: start; }
+  .mosaic-group--portraits { display: block; columns: 2; column-gap: 6px; aspect-ratio: auto; }
+  .mosaic-group--portraits .artwork { break-inside: avoid; margin-bottom: 6px; }
+  #gallery .artwork-view, #gallery .artwork-view img { height: auto; }
+  #gallery .artwork-caption { position: static; opacity: 1; padding: .65rem .45rem .85rem; background: #faf7ef; }
+  #gallery .script-cover { min-height: 250px; padding: 1.4rem; }
+  #gallery.is-filtered { column-count: 1; }
+  .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
