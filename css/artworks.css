@@ -207,40 +207,27 @@
   .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
 
-/* Continuous title-and-description light treatment.
-   Text geometry is untouched. The layer extends up to 40px beyond the content,
-   with a 24px feather and an 83% warm-ivory plateau beneath BOTH text blocks. */
+/* Header-only tonal separation: a muted, siding-colored light layer.
+   No white plateau, blur, frosted surface, rectangular mask, or text changes. */
 .gallery-intro::before {
-  --intro-feather: 24px;
   display: block;
   content: "";
   position: absolute;
-  inset: calc(4rem - 40px) max(0px, calc(4.5% - 40px)) calc(3.5rem - 40px);
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   opacity: 1;
-  background: rgb(248 243 232 / 83%);
-  -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 var(--intro-feather), #000 calc(100% - var(--intro-feather)), transparent),
-    linear-gradient(to bottom, transparent, #000 var(--intro-feather), #000 calc(100% - var(--intro-feather)), transparent);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent, #000 var(--intro-feather), #000 calc(100% - var(--intro-feather)), transparent),
-    linear-gradient(to bottom, transparent, #000 var(--intro-feather), #000 calc(100% - var(--intro-feather)), transparent);
-  mask-composite: intersect;
+  background: linear-gradient(to bottom,
+    rgb(232 231 211 / 0%) 0%,
+    rgb(232 231 211 / 26%) 18%,
+    rgb(232 231 211 / 46%) 34%,
+    rgb(232 231 211 / 46%) 66%,
+    rgb(232 231 211 / 26%) 82%,
+    rgb(232 231 211 / 0%) 100%);
+  -webkit-mask: none;
+  mask: none;
 }
 .gallery-intro > h1, .gallery-intro > .intro-copy {
   position: relative;
   z-index: 1;
-}
-@media (max-width: 950px) and (min-width: 641px) {
-  .gallery-intro::before {
-    inset: 0 max(0px, calc(4.5% - 40px));
-  }
-}
-@media (max-width: 640px) {
-  .gallery-intro::before {
-    --intro-feather: 16px;
-    inset: 0;
-  }
 }
