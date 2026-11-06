@@ -1,0 +1,125 @@
+/* Homepage only. Other Museum and Spring pages retain css/style.css.
+   Balanced Museum Editorial, Option B: Cormorant Garamond is a first
+   website type study; the permanent brand font has not been selected. */
+:root {
+  --ivory: #f6f1e8;
+  --plum: #43152f;
+  --muted: #675c61;
+  --sage: #d2dbc4;
+  --green: #485644;
+  --rule: #ccc7b6;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 1rem; }
+body { margin: 0; color: var(--plum); background: var(--ivory); font-family: var(--serif); font-size: 20px; line-height: 1.45; }
+a { color: inherit; text-decoration: none; text-underline-offset: .28em; }
+button { font: inherit; color: inherit; }
+img { display: block; max-width: 100%; }
+p, h1, h2 { margin: 0; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--plum); outline-offset: 5px; }
+.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 20; padding: .7rem 1rem; background: var(--ivory); }
+.skip-link:focus { top: 1rem; }
+.masthead { min-height: 88px; display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.1rem 4.5%; border-bottom: 1px solid var(--rule); }
+.wordmark { font-size: clamp(24px, 2.25vw, 36px); line-height: 1; letter-spacing: -.04em; white-space: nowrap; font-weight: 500; }
+.wordmark em { font-weight: 400; }
+.primary-nav { display: flex; align-items: center; gap: clamp(1.2rem, 2.4vw, 2.8rem); }
+.primary-nav a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 12px; }
+.primary-nav a:hover, .footer a:hover { text-decoration: underline; }
+.menu-toggle { display: none; }
+.house { position: relative; width: 100%; aspect-ratio: 3 / 2; background: var(--sage); isolation: isolate; }
+.house-scene { position: absolute; inset: 0; z-index: -1; }
+.house-scene img { width: 100%; height: 100%; object-fit: fill; }
+.house-title { position: absolute; top: 33%; left: 28.3%; width: 43.4%; text-align: center; }
+.eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: .19em; text-transform: uppercase; line-height: 1.6; }
+.house-byline { margin-bottom: 1.35vw; font-size: clamp(8px, .85vw, 13px); letter-spacing: .16em; }
+h1 { font-weight: 500; line-height: .83; letter-spacing: -.045em; }
+h1 span { display: block; }
+.title-the { display: flex; align-items: center; justify-content: center; gap: 1.5vw; margin-bottom: 1.4vw; font-size: clamp(13px, 1.75vw, 27px); font-weight: 500; letter-spacing: .26em; text-transform: uppercase; line-height: 1; }
+.title-the::before, .title-the::after { content: ""; width: 4.5vw; height: 1px; background: currentColor; opacity: .6; }
+.title-museum { font-size: clamp(30px, 6.15vw, 108px); white-space: nowrap; }
+.title-museum em { font-size: .54em; font-weight: 400; letter-spacing: -.07em; }
+.title-brilliance { margin-top: .65vw; font-size: clamp(34px, 7.05vw, 122px); }
+.house-note { margin-top: 2.1vw; font-style: italic; font-weight: 500; font-size: clamp(13px, 1.7vw, 28px); line-height: 1.1; }
+.window { position: absolute; top: 30.5%; height: 48%; width: 19.8%; display: flex; justify-content: center; align-items: flex-end; padding: 0 1% 2%; border: 1px solid transparent; }
+.window-artworks { left: 7.3%; }
+.window-exhibitions { right: 7.3%; }
+.window-label { display: flex; align-items: center; justify-content: space-between; gap: 1vw; width: 100%; padding: .7em .8em; background: #43152ff2; color: #fff8ef; font-family: var(--sans); font-size: clamp(10px, 1vw, 16px); letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; border: 1px solid #f6f1e84d; }
+.window:hover .window-label { background: var(--ivory); color: var(--plum); border-color: var(--plum); }
+.window:focus-visible { outline: 4px solid var(--ivory); outline-offset: 3px; box-shadow: 0 0 0 8px var(--plum); }
+.house-caption { position: absolute; bottom: 2.5%; right: 4.5%; font-family: var(--sans); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; padding: .5em .8em; background: var(--ivory); }
+.section-wrap { padding-left: 7%; padding-right: 7%; }
+.welcome { display: grid; grid-template-columns: .6fr 1.25fr 1fr; gap: 3.5rem; align-items: center; padding-top: 4.5rem; padding-bottom: 4.5rem; border-bottom: 1px solid var(--rule); }
+.welcome h2 { font-size: clamp(32px, 3.1vw, 49px); line-height: 1; font-weight: 500; letter-spacing: -.025em; }
+.welcome > p:last-child { font-size: 20px; line-height: 1.5; max-width: 34ch; color: var(--muted); }
+.featured { padding-top: 5rem; padding-bottom: 5rem; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5%; }
+.featured-image { display: block; position: relative; background: #ddd8ce; }
+.featured-image > img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.image-caption { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 9px; letter-spacing: .1em; padding: 12px 0 0; text-transform: uppercase; }
+.featured-copy .eyebrow { margin-bottom: 1.3rem; }
+.featured h2 { font-size: clamp(37px, 4.1vw, 68px); line-height: .97; font-weight: 500; letter-spacing: -.025em; }
+.featured h2 em { font-weight: 500; }
+.exhibition-date { margin-top: 1.4rem; font-size: 20px; }
+.featured-description { max-width: 39ch; color: var(--muted); margin-top: 1rem; font-size: 20px; }
+.text-link { display: inline-flex; min-height: 44px; align-items: center; gap: 2rem; margin-top: 1.5rem; border-bottom: 1px solid var(--plum); font-size: 20px; }
+.text-link:hover { text-decoration: underline; }
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid var(--rule); }
+.notes > div { padding: 0 4%; }
+.notes > div + div { border-left: 1px solid var(--rule); padding-left: 12%; }
+.notes h2 { font-size: clamp(35px, 3.5vw, 55px); line-height: 1; letter-spacing: -.025em; font-weight: 500; margin: 1.1rem 0; }
+.notes p:not(.eyebrow) { max-width: 35ch; color: var(--muted); }
+.footer { padding: 2rem 4.5%; background: var(--green); color: var(--ivory); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.footer-location { font-style: italic; font-size: 23px; }
+.footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.footer nav a { display: inline-flex; min-height: 44px; align-items: center; font-size: 18px; }
+.copyright { width: 100%; padding-top: 1rem; border-top: 1px solid #f6f1e833; font-family: var(--sans); font-size: 10px; letter-spacing: .04em; opacity: .85; }
+@media (min-width: 1800px) { .house-title { top: 35%; } }
+@media (max-width: 900px) and (min-width: 641px) {
+ .masthead { flex-wrap: wrap; justify-content: center; gap: .4rem; padding-top: 1.1rem; padding-bottom: .5rem; }
+ .wordmark { width: 100%; text-align: center; font-size: 30px; }
+ .welcome { grid-template-columns: 1fr 1fr; gap: 2rem; }
+ .welcome .eyebrow { grid-column: 1 / -1; }
+ .featured { gap: 2rem; }
+}
+@media (max-width: 640px) {
+ body { font-size: 19px; }
+ .masthead { min-height: 78px; padding: 1rem 6%; gap: .5rem; flex-wrap: wrap; }
+ .wordmark { font-size: clamp(22px, 6vw, 31px); }
+ .menu-toggle:not([hidden]) { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-width: 44px; min-height: 44px; border: 0; background: transparent; padding: 0; font-family: var(--sans); font-size: 11px; }
+ .menu-icon { display: block; width: 18px; height: 12px; border-top: 1px solid; border-bottom: 1px solid; }
+ .primary-nav { width: 100%; justify-content: space-between; gap: .4rem; border-top: 1px solid var(--rule); padding-top: .4rem; }
+ .primary-nav a { font-size: 11px; }
+ .js-nav .primary-nav:not(.is-open) { display: none; }
+ .house { aspect-ratio: 2 / 3; }
+ .house-title { top: 35%; left: 28.3%; width: 43.4%; }
+ .house-byline { font-size: clamp(8px, 1.8vw, 11px); letter-spacing: .1em; margin-bottom: 1rem; max-width: 16ch; margin-left: auto; margin-right: auto; }
+ .title-the { font-size: clamp(13px, 3.2vw, 20px); gap: 8px; margin-bottom: .7rem; }
+ .title-the::before, .title-the::after { width: 14px; }
+ .title-museum { font-size: clamp(23px, 7vw, 45px); }
+ .title-museum em { display: block; font-size: .55em; margin: .6em 0; letter-spacing: .01em; }
+ .title-brilliance { font-size: clamp(28px, 8.2vw, 53px); }
+ .house-note { font-size: clamp(12px, 2.7vw, 17px); line-height: 1.2; margin-top: 1.15rem; }
+ .window { top: 32%; height: 43%; width: 24%; padding: 0 0 3%; }
+ .window-artworks { left: 4%; }
+ .window-exhibitions { right: 4%; }
+ .window-label { font-size: clamp(8px, 2.1vw, 12px); letter-spacing: .025em; gap: 3px; padding: 11px 5px; justify-content: center; }
+ .house-caption { font-size: 7px; bottom: 2%; right: 5%; }
+ .section-wrap { padding-left: 7%; padding-right: 7%; }
+ .welcome { display: block; padding-top: 2.7rem; padding-bottom: 2.7rem; }
+ .welcome h2 { font-size: 37px; margin: 1.1rem 0; }
+ .welcome > p:last-child { font-size: 19px; max-width: none; }
+ .featured { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.8rem; }
+ .featured h2 { font-size: 43px; }
+ .exhibition-date { font-size: 18px; }
+ .featured-description { font-size: 19px; }
+ .notes { grid-template-columns: 1fr; gap: 2.4rem; padding-top: 2.6rem; padding-bottom: 2.6rem; }
+ .notes > div { padding: 0; }
+ .notes > div + div { border-left: 0; border-top: 1px solid var(--rule); padding: 2.4rem 0 0; }
+ .notes h2 { font-size: 39px; }
+ .footer { padding: 1.8rem 7%; gap: .8rem; }
+ .footer nav { gap: 1rem; }
+ .footer nav a { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+@media (forced-colors: active) { .window-label { border: 2px solid ButtonText; } .window:focus-visible { outline-color: Highlight; } }
