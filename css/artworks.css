@@ -4,6 +4,7 @@
 .artworks-page .masthead { background: var(--ivory); }
 .artworks-page .primary-nav [aria-current="page"] { border-bottom: 1px solid var(--plum); }
 .gallery-intro { position: relative; isolation: isolate; display: grid; grid-template-columns: 2.2fr 1fr; align-items: center; gap: 4%; padding: 4rem 4.5% 3.5rem; border-bottom: 1px solid #a9b498; background: #e1e6d6; }
+.gallery-intro::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url('../images/home-house-desktop.webp') 50% 42% / 275% auto; opacity: .25; }
 .gallery-intro h1 { font-size: clamp(44px, 9.8vw, 160px); white-space: nowrap; }
 .gallery-intro .intro-copy { border-left: 1px solid #879174; padding-left: 9%; font-size: clamp(20px, 2vw, 30px); font-style: italic; line-height: 1.3; max-width: 29ch; }
 .gallery-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 4.5%; border-bottom: 1px solid var(--rule); }
@@ -116,6 +117,7 @@
 }
 .artworks-page .masthead { background: rgb(246 241 232 / 28%); border-bottom-color: #929d81; }
 .gallery-intro { background: transparent; }
+.gallery-intro::before { display: none; }
 .gallery-tools { background: rgb(246 241 232 / 15%); border-bottom-color: #a9b498; }
 .gallery-meta { color: var(--plum); }
 #gallery.gallery-grid {
@@ -205,8 +207,12 @@
   .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
 
-/* Header text sits directly on the original garden-wall image.
-   All historical header pseudo-element overlays have been removed. */
+/* Keep original architectural background declarations intact.
+   Disable only the header readability pseudo-element: no panel is rendered. */
+.gallery-intro::before {
+  display: none;
+  content: none;
+}
 .gallery-intro > h1, .gallery-intro > .intro-copy {
   position: relative;
   z-index: 1;
