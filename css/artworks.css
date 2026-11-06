@@ -207,22 +207,18 @@
   .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
 
-/* Existing header panel: one creamy ivory surface, 93% opaque across both
-   text blocks, fading only at the outer edges. No new layer or text changes. */
+/* One defined editorial panel behind the existing title and description.
+   Uniform warm cream: no gradients, feathering, blur, glow, or shadow. */
 .gallery-intro::before {
   display: block;
   content: "";
   position: absolute;
-  inset: 0;
+  inset: calc(4rem - 28px) max(8px, calc(4.5% - 28px)) calc(3.5rem - 28px);
   z-index: 0;
   pointer-events: none;
   opacity: 1;
-  --header-panel-feather: 24px;
-  background: linear-gradient(to bottom,
-    rgb(248 243 232 / 0%) 0%,
-    rgb(248 243 232 / 93%) var(--header-panel-feather),
-    rgb(248 243 232 / 93%) calc(100% - var(--header-panel-feather)),
-    rgb(248 243 232 / 0%) 100%);
+  background: rgb(244 237 223 / 94%);
+  border-radius: 2px;
   -webkit-mask: none;
   mask: none;
 }
@@ -230,6 +226,9 @@
   position: relative;
   z-index: 1;
 }
+@media (max-width: 950px) and (min-width: 641px) {
+  .gallery-intro::before { inset: 12px max(8px, calc(4.5% - 28px)); }
+}
 @media (max-width: 640px) {
-  .gallery-intro::before { --header-panel-feather: 12px; }
+  .gallery-intro::before { inset: 12px 8px; }
 }
