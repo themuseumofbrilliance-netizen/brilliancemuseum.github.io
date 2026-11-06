@@ -1,0 +1,145 @@
+{
+  "notes": "Catalogue fields transcribed from existing exhibition documentation. Null means not recorded. Exhibition is optional; standalone works do not require one. The screenplay is a written work, not a completed film. No series are currently asserted.",
+  "works": [
+    {
+      "id": "work-01",
+      "title": "First Night On The Rooftop",
+      "year": "2025",
+      "medium": "Acrylic on canvas",
+      "dimensions": null,
+      "description": "Keo renders a lone figure in blue beneath a streetlight, the body flattened against an empty parking lot. Acrylic is applied in deliberate layers: muted tones for the pavement and buildings, sharper edges for the neon sign that continues its cycle overhead. The composition holds a single moment of stillness, the figure positioned in a way that suggests pause rather than motion. By isolating form against urban infrastructure, the work gestures toward vulnerability and exposure without dramatizing it.",
+      "image": "images/artwork-01-first-night-on-the-rooftop.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-02",
+      "title": "First Time In Arrival",
+      "year": "2025",
+      "medium": "Acrylic on canvas",
+      "dimensions": null,
+      "description": "Working from an elevated perspective, Keo revisits the scene from First Night on the Rooftop with a shift in vantage point. The buildings, road, and trees are constructed in flat greys, while the blue figure is rendered as a single uninterrupted shape that floats across the surface. The skewed perspective and stacked windows turn the composition into something closer to a diagram, a way of organizing memory through spatial logic. Here, the artist showcases how something can now be studied, edited, and re-entered with sharper confidence.",
+      "image": "images/artwork-02-first-time-in-arrival.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-03",
+      "title": "Cloud To Soil",
+      "year": "2023",
+      "medium": "Acrylic on canvas",
+      "dimensions": null,
+      "description": "A dark blue figure bends forward against a rust-red field, arm extended into a thick patch of layered, dragged acrylic. The pale “soil” is built through repeated gestures, left rough and unresolved. Keo uses the physical weight of paint to anchor abstraction, letting the surface carry what language might struggle to hold. Cloud To Soil comes from taking old, heavy experiences and refusing to leave them floating in your head. Here they’re dragged down into the ground instead — pressed into a place where they can act like compost, feeding whatever decides to grow next.",
+      "image": "images/artwork-03-cloud-to-soil.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-04",
+      "title": "The Little Blue House",
+      "year": "2025",
+      "medium": "Acrylic and oil pastels on canvas",
+      "dimensions": null,
+      "description": "Working from a found photograph, Keo reduces the scene to its essential elements: a field, a deep blue sky, and a single glowing blue house in the distance. The house is blocked in with acrylic, then built up with oil pastel until the color pushes past natural, reading more as signal than structure. A small figure stands back and observes. The work folds looking into considering, watching a life lit up across the grass before deciding what comes next.",
+      "image": "images/artwork-04-the-little-blue-house.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-05",
+      "title": "First Night At Home",
+      "year": "2025",
+      "medium": "Acrylic and oil pastels on pillowcase",
+      "dimensions": null,
+      "description": "By painting directly onto pillowcases, Keo transforms functional objects into surfaces for memory and intimacy. The red letters emerge through layered acrylic and oil pastel, their glow recalling signage but subdued by the fabric’s domestic softness. Here, the artist uses materials and text to evoke a threshold moment — one where unfamiliarity quietly settles into something closer.",
+      "image": "images/artwork-05-first-night-at-home.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-06",
+      "title": "Process",
+      "year": "2025",
+      "medium": "Acrylic on duck cotton",
+      "dimensions": null,
+      "description": "Laid flat in the studio for months, this unstretched duck cotton has accumulated test marks, wiped brushes, dropped pastels, and overspray from other works. Angles of color stop abruptly where canvases once sat, leaving ghost borders and overlapping sweeps of paint. Nothing here was planned, but every layer records a decision made elsewhere in the studio. Keo reframes the drop cloth as the main event, a single surface that holds the accumulation and rhythm of building an exhibition.",
+      "image": "images/artwork-06-process.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-07",
+      "title": "Untitled",
+      "year": "2025",
+      "medium": "Acrylic on canvas",
+      "dimensions": null,
+      "description": "Two outline figures stand against a misted forest, rendered as blue contour drawings atop a softly painted ground. One offers a red rose; the other appears mid-step, hand raised, uncommitted. The composition holds the pair in a moment of proposition and hesitation — bodies drawn in the vocabulary of anatomical study, as if the relationship itself is still being diagrammed.",
+      "image": "images/artwork-07-untitled.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-08",
+      "title": "Hero’s Journey",
+      "year": "2022",
+      "medium": "Acrylic on canvas",
+      "dimensions": null,
+      "description": "On the left, a sphere sits carefully shaded against a muted, cloudy ground. On the right, that same sphere is pulled apart into a chart of arrows, notes, and pathways. Keo treats the process of understanding as a visual problem: beginning with something simple and solid, then overworking it into a diagram of possible outcomes. The split composition mirrors the way introspection can become recursive, mapping and remapping until the original form is nearly obscured.",
+      "image": "images/artwork-08-heros-journey.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "work-09",
+      "title": "Love & Vulnerability",
+      "year": "2022",
+      "medium": "Acrylic on duck cotton fabric",
+      "dimensions": null,
+      "description": "Painted onto unstretched duck cotton, two cloaked forms occupy a small patch of ground within a rough black window cut from the raw fabric. One figure is tall and red with a sharp, beak-like hood; the other is smaller and blue, with a heart visible through its chest. Their shadows lean toward each other beneath a distant red moon. By working directly on fabric and leaving the edges unfinished, Keo collapses the boundary between object and image, letting the material itself become part of the exchange between protection and exposure.",
+      "image": "images/artwork-09-love-and-vulnerability.jpg",
+      "categories": [
+        "paintings"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": "Shots Fired on Valentine Street"
+    },
+    {
+      "id": "blue-cowboy-screenplay",
+      "title": "The Blue Cowboy & The Blob",
+      "year": null,
+      "medium": "Screenplay for an animated short film",
+      "dimensions": null,
+      "description": "An animated short film script, staged in the exhibition as a printed object with candles and a single rose. The full text is preserved with the exhibition documentation.",
+      "image": null,
+      "categories": [
+        "multimedia"
+      ],
+      "source": "exhibitions/shots-fired-on-valentine-st.html",
+      "exhibition": null
+    }
+  ]
+}

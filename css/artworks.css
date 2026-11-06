@@ -1,0 +1,108 @@
+/* Artworks only. Shared approved typography and navigation come from home.css. */
+.artworks-page [hidden] { display: none !important; }
+.artworks-page { background: var(--ivory); }
+.artworks-page .masthead { background: var(--ivory); }
+.artworks-page .primary-nav [aria-current="page"] { border-bottom: 1px solid var(--plum); }
+.gallery-intro { position: relative; isolation: isolate; display: grid; grid-template-columns: 2.2fr 1fr; align-items: center; gap: 4%; padding: 4rem 4.5% 3.5rem; border-bottom: 1px solid #a9b498; background: #e1e6d6; }
+.gallery-intro::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url('../images/home-house-desktop.webp') 50% 42% / 275% auto; opacity: .25; }
+.gallery-intro h1 { font-size: clamp(44px, 9.8vw, 160px); white-space: nowrap; }
+.gallery-intro .intro-copy { border-left: 1px solid #879174; padding-left: 9%; font-size: clamp(20px, 2vw, 30px); font-style: italic; line-height: 1.3; max-width: 29ch; }
+.gallery-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 4.5%; border-bottom: 1px solid var(--rule); }
+.filter-buttons { display: flex; flex-wrap: wrap; gap: clamp(1rem, 3.5vw, 4rem); }
+.filter-buttons button { border: 0; border-bottom: 2px solid transparent; background: transparent; padding: .6rem 0; font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; min-height: 44px; cursor: pointer; }
+.filter-buttons button[aria-pressed="true"] { border-bottom-color: var(--plum); }
+.filter-buttons button:hover { text-decoration: underline; }
+.gallery-search { display: flex; gap: .65rem; align-items: center; font-family: var(--sans); font-size: 11px; }
+.gallery-search input { color: var(--plum); background: transparent; border: 0; border-bottom: 1px solid #b7b4a6; padding: .6rem .2rem; min-height: 44px; width: 170px; font: inherit; font-size: 13px; border-radius: 0; }
+.gallery-search input:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+.gallery-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: 1.4rem 4.5% 1.1rem; font-family: var(--sans); font-size: 10px; letter-spacing: .07em; color: var(--muted); }
+.gallery-meta p:last-child { font-family: var(--serif); font-size: 17px; font-style: italic; letter-spacing: 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(68px, 7.5vw, 112px); grid-auto-flow: dense; gap: clamp(16px, 2.2vw, 36px); margin: 0 3% 3rem; padding: clamp(12px, 1.6vw, 24px); background: #fbf8f0; border: 1px solid #e1decf; }
+.artwork { min-width: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; grid-column: span 3; grid-row: span 4; }
+.artwork:nth-child(1) { grid-column: span 5; grid-row: span 5; }
+.artwork:nth-child(2) { grid-column: span 3; grid-row: span 3; }
+.artwork:nth-child(3) { grid-column: span 4; grid-row: span 6; }
+.artwork:nth-child(4) { grid-column: span 3; grid-row: span 3; }
+.artwork:nth-child(5) { grid-column: span 3; grid-row: span 5; }
+.artwork:nth-child(6) { grid-column: span 4; grid-row: span 5; }
+.artwork:nth-child(7) { grid-column: span 4; grid-row: span 5; }
+.artwork:nth-child(8) { grid-column: span 5; grid-row: span 4; }
+.artwork:nth-child(9) { grid-column: span 3; grid-row: span 5; }
+.artwork:nth-child(10) { grid-column: span 5; grid-row: span 3; }
+.artwork-view { display: flex; justify-content: center; align-items: center; min-height: 0; background: #f1eee4; padding: clamp(8px, 1.2vw, 18px); border: 1px solid #e8e3d6; }
+.artwork-view:hover { border-color: #948670; }
+.artwork-view img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.artwork-caption { padding: .75rem .15rem 0; }
+.artwork-caption h2 { font-weight: 500; font-size: clamp(21px, 1.8vw, 29px); line-height: 1.1; }
+.artwork-caption .work-medium { margin-top: .35rem; color: var(--muted); font-family: var(--sans); font-size: 10px; line-height: 1.5; }
+.caption-year { font-family: var(--sans); font-size: 10px; color: var(--muted); white-space: nowrap; }
+.script-cover { flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 1.6rem; background: #e5e9db; }
+.script-cover .script-title { font-family: var(--serif); font-size: clamp(25px, 2.7vw, 42px); line-height: 1; font-style: italic; }
+.script-cover .script-foot { font-family: var(--sans); font-size: 10px; letter-spacing: .07em; }
+.gallery-empty { padding: 4rem 7% 5rem; text-align: center; border: 1px solid var(--rule); margin: 1rem 4.5% 3rem; }
+.gallery-empty h2 { font-size: 36px; font-weight: 500; margin-bottom: .7rem; }
+.gallery-empty p { max-width: 44ch; margin: 0 auto; color: var(--muted); }
+.gallery-end { min-height: 190px; display: flex; align-items: flex-start; justify-content: center; padding: 1.5rem 20%; background: #d9e0ce url('../images/home-house-desktop.webp') 50% 100% / 100% auto; border-top: 1px solid #adb69e; }
+.gallery-end p { padding: .45rem .8rem; background: var(--ivory); font-family: var(--sans); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
+.catalogue-records { padding: 3rem 7%; }
+.catalogue-records > h2 { font-size: 40px; font-weight: 500; }
+.catalogue-record { padding: 2rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 2rem; }
+.catalogue-record > h3 { font-size: 30px; font-weight: 500; }
+.record-content dl { display: grid; grid-template-columns: 90px 1fr; gap: .4rem 1rem; margin: 1rem 0 1.5rem; }
+.record-content dt { font-family: var(--sans); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; padding-top: .3rem; }
+.record-content dd { margin: 0; }
+.record-description { line-height: 1.55; }
+.record-content .record-source { margin-top: 1.4rem; font-size: 16px; }
+.record-content a { text-decoration: underline; }
+.artwork-dialog { width: min(1180px, 94vw); max-width: 94vw; max-height: 92dvh; padding: 0; border: 1px solid #c8c4b3; background: var(--ivory); color: var(--plum); }
+.artwork-dialog::backdrop { background: rgb(31 25 28 / 60%); }
+.dialog-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 1rem; border-bottom: 1px solid var(--rule); }
+.dialog-toolbar button { border: 1px solid var(--rule); background: transparent; padding: .5rem .8rem; min-height: 44px; cursor: pointer; font-family: var(--sans); font-size: 12px; }
+.dialog-toolbar button:disabled { opacity: .4; cursor: default; }
+.dialog-toolbar .dialog-progress { margin-right: auto; font-family: var(--sans); font-size: 11px; }
+.dialog-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .8fr); min-height: 0; }
+.dialog-visual { display: flex; align-items: center; justify-content: center; background: #e9e6dc; padding: 1.5rem; }
+.dialog-visual img { max-height: 72dvh; object-fit: contain; width: 100%; }
+.dialog-script { padding: 2rem; }
+.dialog-script p { font-size: 38px; font-style: italic; line-height: 1.1; }
+.dialog-copy { padding: 2rem; }
+.dialog-copy h2 { font-size: 36px; font-weight: 500; line-height: 1.05; }
+.dialog-copy .record-content { font-size: 18px; }
+@media (max-width: 950px) and (min-width: 641px) {
+  .gallery-intro { padding-top: 2.5rem; padding-bottom: 2.5rem; grid-template-columns: 2.2fr 1fr; }
+  .gallery-intro .intro-copy { font-size: 19px; }
+  .gallery-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 80px; }
+  #gallery .artwork { grid-column: span 3; grid-row: span 4; }
+  #gallery .artwork:nth-child(1), #gallery .artwork:nth-child(8) { grid-column: span 4; }
+  #gallery .artwork:nth-child(2), #gallery .artwork:nth-child(9) { grid-column: span 2; }
+  .dialog-main { grid-template-columns: 1fr 1fr; }
+  .dialog-copy { padding: 1.4rem; }
+}
+@media (max-width: 640px) {
+  .gallery-intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 7% 2rem; }
+  .gallery-intro h1 { font-size: clamp(44px, 12vw, 76px); }
+  .gallery-intro .intro-copy { max-width: 29ch; border-left: 0; padding-left: 0; font-size: 21px; }
+  .gallery-tools { padding: .8rem 7%; gap: .5rem; }
+  .filter-buttons { gap: 1.15rem; }
+  .filter-buttons button { font-size: 10px; letter-spacing: .07em; }
+  .gallery-search { width: 100%; justify-content: space-between; }
+  .gallery-search input { width: 76%; }
+  .gallery-meta { padding-left: 7%; padding-right: 7%; }
+  .gallery-meta p:last-child { font-size: 16px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; grid-auto-flow: row; gap: 1.7rem 12px; margin: 0 4% 2rem; padding: 12px; }
+  #gallery .artwork { grid-column: span 2; grid-row: auto; }
+  #gallery .artwork:nth-child(2), #gallery .artwork:nth-child(3) { grid-column: span 1; }
+  .artwork-view { min-height: 140px; padding: 8px; }
+  .artwork-view img { height: auto; max-height: 500px; object-fit: contain; }
+  .artwork-caption h2 { font-size: 22px; }
+  .artwork:nth-child(2) .artwork-caption h2, .artwork:nth-child(3) .artwork-caption h2 { font-size: 19px; }
+  .script-cover { min-height: 220px; padding: 1.3rem; }
+  .script-cover .script-title { font-size: 35px; }
+  .gallery-end { min-height: 170px; background-size: 165% auto; padding: 1.2rem 16%; }
+  .dialog-main { grid-template-columns: 1fr; }
+  .dialog-visual { padding: 1rem; }
+  .dialog-visual img { max-height: 53dvh; }
+  .dialog-copy { padding: 1.5rem; }
+  .dialog-toolbar { position: sticky; top: 0; background: var(--ivory); z-index: 1; flex-wrap: wrap; gap: .5rem; }
+  .dialog-toolbar button { font-size: 11px; padding: .4rem .6rem; }
+}
