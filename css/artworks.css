@@ -206,3 +206,39 @@
   #gallery.is-filtered { column-count: 1; }
   .gallery-end { min-height: 230px; background-size: auto 620px; padding: 1.4rem 17%; }
 }
+
+/* A translucent, feathered light wash behind the title/copy only.
+   No backdrop blur: the existing siding grain remains visible underneath. */
+.gallery-intro::before {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 58% 46% at 30% 52%,
+      rgb(250 246 236 / 44%) 0%,
+      rgb(250 246 236 / 30%) 42%,
+      rgb(250 246 236 / 10%) 72%,
+      rgb(250 246 236 / 0%) 100%),
+    radial-gradient(ellipse 38% 44% at 81% 52%,
+      rgb(250 246 236 / 38%) 0%,
+      rgb(250 246 236 / 24%) 40%,
+      rgb(250 246 236 / 7%) 72%,
+      rgb(250 246 236 / 0%) 100%);
+}
+@media (max-width: 640px) {
+  .gallery-intro::before {
+    background:
+      radial-gradient(ellipse 78% 35% at 43% 36%,
+        rgb(250 246 236 / 44%) 0%,
+        rgb(250 246 236 / 27%) 44%,
+        rgb(250 246 236 / 0%) 100%),
+      radial-gradient(ellipse 73% 28% at 52% 73%,
+        rgb(250 246 236 / 38%) 0%,
+        rgb(250 246 236 / 22%) 42%,
+        rgb(250 246 236 / 0%) 100%);
+  }
+}
