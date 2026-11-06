@@ -1,4 +1,9 @@
-# Homepage photographic composition
+# Archived homepage photographic experiment
+
+**Status: rejected and reverted.** This document records the earlier photographic
+experiment only. The active homepage again uses the exact prior stylized desktop
+and mobile backgrounds. The uploaded photographs are not used by the active
+homepage. Approved typography, layout, and window navigation were not changed.
 
 Replaces the two generated house backgrounds with a photographic montage derived
 from the artist's original house photographs. The supplied set was confirmed
